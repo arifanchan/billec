@@ -46,6 +46,11 @@ switch ($method) {
         if ($role === 'admin') {
             $data = json_decode(file_get_contents("php://input"));
             echo $controller->create($data);
+        
+        // pelanggan dapat mengupload bukti pembayaran
+        } elseif ($role === 'pelanggan') {
+            $data = json_decode(file_get_contents("php://input"));
+            echo $controller->uploadBuktiBayar($id_tagihan, $data);
         } else {
             http_response_code(403);
             echo json_encode(["message" => "Forbidden. Anda tidak memiliki akses."]);

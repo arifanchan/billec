@@ -18,16 +18,26 @@ if (!isset($_SESSION['token'])) {
     exit;
 }
 
-// Middleware: Hanya admin yang bisa menghapus pembayaran
-$isAdmin = ($_SESSION['role'] ?? '') === 'admin';
+// Middleware: Periksa role pengguna
+$role = $_SESSION['role']; // Role disimpan di sesi (admin/pelanggan)
+$id_pelanggan = $_SESSION['user']['id_pelanggan'] ?? null; // ID pelanggan hanya tersedia untuk pelanggan
 
 switch ($method) {
     case 'GET':
-        // Pelanggan dan admin dapat melihat riwayat pembayaran
-        if (isset($_GET['id_pelanggan'])) {
-            echo $controller->getByPelanggan($_GET['id_pelanggan']);
-        } else {
+        // Jika role adalah pelanggan, tampilkan hanya data miliknya sendiri
+        if ($role === 'pelanggan') {
+            if ($id_pelanggan) {
+                echo $controller->getByPelanggan($id_pelanggan);
+            } else {
+                http_response_code(403);
+                echo json_encode(["message" => "Forbidden. Tidak dapat mengakses data."]);
+            }
+        } elseif ($role === 'admin') {
+            // Admin dapat melihat semua pembayaran
             echo $controller->getAll();
+        } else {
+        http_response_code(403);
+        echo json_encode(["message" => "Forbidden. Role tidak valid."]);
         }
         break;
 

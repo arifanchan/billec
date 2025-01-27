@@ -45,6 +45,41 @@ class TagihanController {
         return json_encode(["message" => "Gagal menambahkan tagihan"]);
     }
 
+    public function uploadBuktiBayar($id_tagihan, $file) {
+        // Periksa apakah tagihan ada
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id_tagihan = :id_tagihan";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_tagihan', $id_tagihan);
+        $stmt->execute();
+        $tagihan = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if (!$tagihan) {
+            http_response_code(404);
+            return json_encode(["message" => "Tagihan tidak ditemukan"]);
+        }
+    
+        // Proses upload file
+        $upload_dir = "../uploads/"; // Pastikan folder ini memiliki izin tulis
+        $file_name = $id_tagihan . "_" . basename($file['name']);
+        $target_file = $upload_dir . $file_name;
+    
+        if (move_uploaded_file($file['tmp_name'], $target_file)) {
+            // Update kolom bukti_bayar di database
+            $query = "UPDATE " . $this->table_name . " SET bukti_bayar = :bukti_bayar WHERE id_tagihan = :id_tagihan";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':bukti_bayar', $file_name);
+            $stmt->bindParam(':id_tagihan', $id_tagihan);
+    
+            if ($stmt->execute()) {
+                return json_encode(["message" => "Bukti pembayaran berhasil diunggah"]);
+            } else {
+                return json_encode(["message" => "Gagal menyimpan bukti pembayaran ke database"]);
+            }
+        } else {
+            return json_encode(["message" => "Gagal mengunggah file bukti pembayaran"]);
+        }
+    }
+
     // Memperbarui data tagihan
     public function update($data) {
         $query = "UPDATE " . $this->table_name . " 
