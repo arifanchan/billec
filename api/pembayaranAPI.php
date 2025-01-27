@@ -3,11 +3,19 @@ include_once '../config/database.php';
 include_once '../controllers/PembayaranController.php';
 
 header("Content-Type: application/json");
+session_start();
 $database = new Database();
 $db = $database->getConnection();
 $controller = new PembayaranController($db);
 
 $method = $_SERVER['REQUEST_METHOD'];
+
+// Middleware: Periksa apakah pengguna sudah login
+if (!isset($_SESSION['token'])) {
+    http_response_code(401);
+    echo json_encode(["message" => "Unauthorized. Silakan login terlebih dahulu."]);
+    exit;
+}
 switch ($method) {
     case 'GET':
         echo $controller->getAll();

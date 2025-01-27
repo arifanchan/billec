@@ -23,31 +23,32 @@
     <?php endif; ?>
 
     <script>
-        document.getElementById("login-form").addEventListener("submit", async function (e) {
-            e.preventDefault();
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+    document.getElementById("login-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
 
-            const response = await fetch("../api/authAPI.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    action: "login",
-                    username: username,
-                    password: password
-                })
-            });
-
-            const result = await response.json();
-            if (response.ok) {
-                document.getElementById("message").textContent = "Login berhasil!";
-                window.location.reload(); // Reload halaman
-            } else {
-                document.getElementById("message").textContent = result.message;
-            }
+        const response = await fetch("../api/authAPI.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                action: "login",
+                username: username,
+                password: password
+            })
         });
-    </script>
-</body>
-</html>
+
+        const result = await response.json();
+        if (response.ok) {
+            if (result.role === "admin") {
+                window.location.href = "admin/dashboard.php"; // Dashboard admin
+            } else if (result.role === "pelanggan") {
+                window.location.href = "pelanggan/dashboard.php"; // Dashboard pelanggan
+            }
+        } else {
+            document.getElementById("message").textContent = result.message;
+        }
+    });
+</script>

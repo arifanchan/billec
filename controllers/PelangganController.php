@@ -59,5 +59,21 @@ class PelangganController {
         }
         return json_encode(["message" => "Gagal menghapus pelanggan"]);
     }
+
+    public function getById($id_pelanggan) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id_pelanggan = :id_pelanggan";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id_pelanggan", $id_pelanggan);
+        $stmt->execute();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($data) {
+            return json_encode($data);
+        }
+    
+        http_response_code(404);
+        return json_encode(["message" => "Data pelanggan tidak ditemukan"]);
+    }
+    
 }
 ?>

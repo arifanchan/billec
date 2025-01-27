@@ -8,7 +8,7 @@ class PenggunaanController {
     }
 
     public function getAll() {
-        $query = "SELECT * FROM " . $this->table_name;
+        $query = "SELECT * FROM view_penggunaan_listrik";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
