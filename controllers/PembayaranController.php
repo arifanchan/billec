@@ -7,43 +7,47 @@ class PembayaranController {
         $this->conn = $db;
     }
 
-    // Mendapatkan semua data pembayaran
+    // Mendapatkan semua data pembayaran (untuk admin)
     public function getAll() {
-        $query = "SELECT * FROM " . $this->table_name;
+        $query = "SELECT p.*, t.bulan, t.tahun 
+                  FROM " . $this->table_name . " p
+                  INNER JOIN tagihan t ON p.id_tagihan = t.id_tagihan";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($data);
     }
 
-    // Membuat data pembayaran baru
-    public function create($data) {
-        $query = "INSERT INTO " . $this->table_name . " (id_tagihan, id_pelanggan, tanggal_pembayaran, bulan_bayar, biaya_admin, total_bayar, id_user)
-                  VALUES (:id_tagihan, :id_pelanggan, :tanggal_pembayaran, :bulan_bayar, :biaya_admin, :total_bayar, :id_user)";
+    // Mendapatkan data pembayaran berdasarkan pelanggan (untuk pelanggan)
+    public function getByPelanggan($id_pelanggan) {
+        $query = "SELECT p.*, t.bulan, t.tahun 
+                  FROM " . $this->table_name . " p
+                  INNER JOIN tagihan t ON p.id_tagihan = t.id_tagihan
+                  WHERE p.id_pelanggan = :id_pelanggan";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":id_tagihan", $data->id_tagihan);
-        $stmt->bindParam(":id_pelanggan", $data->id_pelanggan);
-        $stmt->bindParam(":tanggal_pembayaran", $data->tanggal_pembayaran);
-        $stmt->bindParam(":bulan_bayar", $data->bulan_bayar);
-        $stmt->bindParam(":biaya_admin", $data->biaya_admin);
-        $stmt->bindParam(":total_bayar", $data->total_bayar);
-        $stmt->bindParam(":id_user", $data->id_user);
+        $stmt->bindParam(':id_pelanggan', $id_pelanggan);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($stmt->execute()) {
-            return json_encode(["message" => "Pembayaran berhasil ditambahkan"]);
+        if ($data) {
+            return json_encode($data);
+        } else {
+            http_response_code(404);
+            return json_encode(["message" => "Tidak ada pembayaran untuk pelanggan ini."]);
         }
-        return json_encode(["message" => "Gagal menambahkan pembayaran"]);
     }
 
-    // Menghapus data pembayaran
+    // Menghapus data pembayaran (hanya admin)
     public function delete($id_pembayaran) {
         $query = "DELETE FROM " . $this->table_name . " WHERE id_pembayaran = :id_pembayaran";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":id_pembayaran", $id_pembayaran);
+        $stmt->bindParam(':id_pembayaran', $id_pembayaran);
+
         if ($stmt->execute()) {
             return json_encode(["message" => "Pembayaran berhasil dihapus"]);
+        } else {
+            return json_encode(["message" => "Gagal menghapus pembayaran"]);
         }
-        return json_encode(["message" => "Gagal menghapus pembayaran"]);
     }
 }
 ?>

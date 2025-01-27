@@ -1,4 +1,5 @@
 <?php
+
 class AuthController {
     private $conn;
     private $table_user = "user";       // Tabel admin

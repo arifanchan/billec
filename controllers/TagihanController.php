@@ -16,6 +16,16 @@ class TagihanController {
         return json_encode($data);
     }
 
+    // Mendapatkan data tagihan berdasarkan id_pelanggan (khusus pelanggan)
+    public function getByPelanggan($id_pelanggan) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id_pelanggan = :id_pelanggan";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id_pelanggan", $id_pelanggan);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($data);
+    }
+
     // Membuat data tagihan baru
     public function create($data) {
         $query = "INSERT INTO " . $this->table_name . " (id_penggunaan, id_pelanggan, bulan, tahun, jumlah_meter, status, total_tagihan)

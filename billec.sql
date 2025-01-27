@@ -20,7 +20,7 @@ CREATE TABLE user (
 -- Tabel Tarif
 CREATE TABLE tarif (
     id_tarif INT AUTO_INCREMENT PRIMARY KEY,
-    daya INT NOT NULL,
+    daya INT NOT NULL UNIQUE,
     tarifperkwh DECIMAL(10,2) NOT NULL
 );
 
@@ -74,6 +74,10 @@ CREATE TABLE pembayaran (
     FOREIGN KEY (id_pelanggan) REFERENCES pelanggan(id_pelanggan),
     FOREIGN KEY (id_user) REFERENCES user(id_user)
 );
+
+ALTER TABLE tarif ADD CONSTRAINT daya_unique UNIQUE (daya);
+
+ALTER TABLE tagihan ADD COLUMN bukti_pembayaran VARCHAR(255) DEFAULT 'default.jpg';
 
 -- Insert Data
 INSERT INTO level (nama_level) VALUES ('admin');

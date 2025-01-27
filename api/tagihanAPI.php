@@ -4,6 +4,7 @@ include_once '../controllers/TagihanController.php';
 
 header("Content-Type: application/json");
 session_start();
+
 $database = new Database();
 $db = $database->getConnection();
 $controller = new TagihanController($db);
@@ -16,22 +17,63 @@ if (!isset($_SESSION['token'])) {
     echo json_encode(["message" => "Unauthorized. Silakan login terlebih dahulu."]);
     exit;
 }
+
+// Middleware: Periksa role pengguna
+$role = $_SESSION['role']; // Role disimpan di sesi (admin/pelanggan)
+$id_pelanggan = $_SESSION['user']['id_pelanggan'] ?? null; // ID pelanggan hanya tersedia untuk pelanggan
+
 switch ($method) {
     case 'GET':
-        echo $controller->getAll();
+        // Pelanggan hanya bisa melihat tagihan miliknya sendiri
+        if ($role === 'pelanggan') {
+            if ($id_pelanggan) {
+                echo $controller->getByPelanggan($id_pelanggan);
+            } else {
+                http_response_code(403);
+                echo json_encode(["message" => "Forbidden. Tidak dapat mengakses data."]);
+            }
+        } elseif ($role === 'admin') {
+            // Admin dapat melihat semua tagihan
+            echo $controller->getAll();
+        } else {
+            http_response_code(403);
+            echo json_encode(["message" => "Forbidden. Role tidak valid."]);
+        }
         break;
+
     case 'POST':
-        $data = json_decode(file_get_contents("php://input"));
-        echo $controller->create($data);
+        // Hanya admin yang boleh membuat data tagihan baru
+        if ($role === 'admin') {
+            $data = json_decode(file_get_contents("php://input"));
+            echo $controller->create($data);
+        } else {
+            http_response_code(403);
+            echo json_encode(["message" => "Forbidden. Anda tidak memiliki akses."]);
+        }
         break;
+
     case 'PUT':
-        $data = json_decode(file_get_contents("php://input"));
-        echo $controller->update($data);
+        // Hanya admin yang boleh memperbarui status pembayaran
+        if ($role === 'admin') {
+            $data = json_decode(file_get_contents("php://input"));
+            echo $controller->update($data);
+        } else {
+            http_response_code(403);
+            echo json_encode(["message" => "Forbidden. Anda tidak memiliki akses."]);
+        }
         break;
+
     case 'DELETE':
-        $data = json_decode(file_get_contents("php://input"));
-        echo $controller->delete($data->id_tagihan);
+        // Hanya admin yang boleh menghapus data tagihan
+        if ($role === 'admin') {
+            $data = json_decode(file_get_contents("php://input"));
+            echo $controller->delete($data->id_tagihan);
+        } else {
+            http_response_code(403);
+            echo json_encode(["message" => "Forbidden. Anda tidak memiliki akses."]);
+        }
         break;
+
     default:
         http_response_code(405);
         echo json_encode(["message" => "Method not allowed"]);
