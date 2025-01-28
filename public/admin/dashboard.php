@@ -7,7 +7,7 @@ if (!isset($_SESSION['token']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 
-$allowed_pages = ['profil', 'pelanggan', 'penggunaan', 'tagihan', 'pembayaran'];
+$allowed_pages = ['profil', 'pelanggan', 'tarif', 'penggunaan', 'tagihan', 'pembayaran'];
 $page = $_GET['page'] ?? 'home';
 
 if (!in_array($page, $allowed_pages)) {
@@ -42,6 +42,7 @@ if (!in_array($page, $allowed_pages)) {
     <nav>
         <a href="dashboard.php?page=profil" class="<?= $page === 'profil' ? 'active' : '' ?>">Profil</a>
         <a href="dashboard.php?page=pelanggan" class="<?= $page === 'pelanggan' ? 'active' : '' ?>">Data Pelanggan</a>
+        <a href="dashboard.php?page=tarif" class="<?= $page === 'tarif' ? 'active' : '' ?>">Tarif Listrik</a>
         <a href="dashboard.php?page=penggunaan" class="<?= $page === 'penggunaan' ? 'active' : '' ?>">Data Penggunaan</a>
         <a href="dashboard.php?page=tagihan" class="<?= $page === 'tagihan' ? 'active' : '' ?>">Data Tagihan</a>
         <a href="dashboard.php?page=pembayaran" class="<?= $page === 'pembayaran' ? 'active' : '' ?>">Data Pembayaran</a>
@@ -53,6 +54,9 @@ if (!in_array($page, $allowed_pages)) {
         switch ($page) {
             case 'profil':
                 include_once 'pages/profil.php';
+                break;
+            case 'tarif':
+                include_once 'pages/tarif.php';
                 break;
             case 'pelanggan':
                 include_once 'pages/pelanggan.php';
