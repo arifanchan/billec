@@ -55,9 +55,11 @@ switch ($method) {
         break;
 
     case 'PUT':
-        // Hanya pelanggan yang bisa mengubah data dirinya sendiri
         $data = json_decode(file_get_contents("php://input"));
+        $data->role = $role; // Tambahkan role ke data yang dikirim ke controller
+    
         if ($role === 'pelanggan' && $data->id_pelanggan == $userId) {
+            // Pelanggan hanya bisa mengubah data dirinya sendiri
             echo $controller->update($data);
         } elseif ($role === 'admin') {
             // Admin bisa mengubah data pelanggan manapun

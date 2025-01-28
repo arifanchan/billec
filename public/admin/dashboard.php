@@ -1,8 +1,17 @@
 <?php
 session_start();
-if (!isset($_SESSION['token'])) {
-    header("Location: ../index.php"); // Redirect ke login jika belum login
+
+// Validasi token dan role admin
+if (!isset($_SESSION['token']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../index.php");
     exit();
+}
+
+$allowed_pages = ['profil', 'pelanggan', 'penggunaan', 'tagihan', 'pembayaran'];
+$page = $_GET['page'] ?? 'home';
+
+if (!in_array($page, $allowed_pages)) {
+    $page = 'home';
 }
 ?>
 
@@ -21,25 +30,30 @@ if (!isset($_SESSION['token'])) {
             text-decoration: none;
             color: blue;
         }
+        .active {
+            font-weight: bold;
+            color: darkblue;
+        }
     </style>
 </head>
 <body>
     <h1>Dashboard Admin</h1>
-    <p>Selamat datang, <?= $_SESSION['user']['nama_admin'] ?></p>
-    
+    <p>Selamat datang, <?= $_SESSION['user']['nama_admin'] ?>! Anda masuk sebagai <strong><?= ucfirst($_SESSION['role']) ?></strong>.</p>
     <nav>
-        <a href="dashboard.php?page=pelanggan">Data Pelanggan</a>
-        <a href="dashboard.php?page=penggunaan">Data Penggunaan</a>
-        <a href="dashboard.php?page=tagihan">Data Tagihan</a>
-        <a href="dashboard.php?page=pembayaran">Data Pembayaran</a>
+        <a href="dashboard.php?page=profil" class="<?= $page === 'profil' ? 'active' : '' ?>">Profil</a>
+        <a href="dashboard.php?page=pelanggan" class="<?= $page === 'pelanggan' ? 'active' : '' ?>">Data Pelanggan</a>
+        <a href="dashboard.php?page=penggunaan" class="<?= $page === 'penggunaan' ? 'active' : '' ?>">Data Penggunaan</a>
+        <a href="dashboard.php?page=tagihan" class="<?= $page === 'tagihan' ? 'active' : '' ?>">Data Tagihan</a>
+        <a href="dashboard.php?page=pembayaran" class="<?= $page === 'pembayaran' ? 'active' : '' ?>">Data Pembayaran</a>
         <a href="../logout.php">Logout</a>
     </nav>
-
+    <p>Anda berada di: <strong><?= ucfirst($page) ?></strong></p>
     <div>
         <?php
-        $page = $_GET['page'] ?? 'home';
-
         switch ($page) {
+            case 'profil':
+                include_once 'pages/profil.php';
+                break;
             case 'pelanggan':
                 include_once 'pages/pelanggan.php';
                 break;
@@ -53,7 +67,7 @@ if (!isset($_SESSION['token'])) {
                 include_once 'pages/pembayaran.php';
                 break;
             default:
-                echo "<p>Silakan pilih menu di atas.</p>";
+                echo "<p>Selamat datang di Dashboard Admin. Pilih menu di atas untuk mulai bekerja.</p>";
                 break;
         }
         ?>

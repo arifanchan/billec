@@ -32,18 +32,38 @@ class PelangganController {
     }
 
     public function update($data) {
-        $query = "UPDATE " . $this->table_name . " 
-                  SET username = :username, password = :password, nomor_kwh = :nomor_kwh, 
-                      nama_pelanggan = :nama_pelanggan, alamat = :alamat, id_tarif = :id_tarif
-                  WHERE id_pelanggan = :id_pelanggan";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":id_pelanggan", $data->id_pelanggan);
-        $stmt->bindParam(":username", $data->username);
-        $stmt->bindParam(":password", $data->password);
-        $stmt->bindParam(":nomor_kwh", $data->nomor_kwh);
-        $stmt->bindParam(":nama_pelanggan", $data->nama_pelanggan);
-        $stmt->bindParam(":alamat", $data->alamat);
-        $stmt->bindParam(":id_tarif", $data->id_tarif);
+        if (isset($data->role) && $data->role === 'pelanggan') {
+            // Pelanggan hanya boleh mengupdate nama_pelanggan, alamat, dan password
+            $query = "UPDATE " . $this->table_name . " 
+                      SET nama_pelanggan = :nama_pelanggan, 
+                          alamat = :alamat, 
+                          password = :password
+                      WHERE id_pelanggan = :id_pelanggan";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(":id_pelanggan", $data->id_pelanggan);
+            $stmt->bindParam(":nama_pelanggan", $data->nama_pelanggan);
+            $stmt->bindParam(":alamat", $data->alamat);
+            $stmt->bindParam(":password", $data->password);
+        } else {
+            // Admin bisa mengupdate semua field
+            $query = "UPDATE " . $this->table_name . " 
+                      SET username = :username, 
+                          password = :password, 
+                          nomor_kwh = :nomor_kwh, 
+                          nama_pelanggan = :nama_pelanggan, 
+                          alamat = :alamat, 
+                          id_tarif = :id_tarif
+                      WHERE id_pelanggan = :id_pelanggan";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(":id_pelanggan", $data->id_pelanggan);
+            $stmt->bindParam(":username", $data->username);
+            $stmt->bindParam(":password", $data->password);
+            $stmt->bindParam(":nomor_kwh", $data->nomor_kwh);
+            $stmt->bindParam(":nama_pelanggan", $data->nama_pelanggan);
+            $stmt->bindParam(":alamat", $data->alamat);
+            $stmt->bindParam(":id_tarif", $data->id_tarif);
+        }
+    
         if ($stmt->execute()) {
             return json_encode(["message" => "Pelanggan berhasil diperbarui"]);
         }
