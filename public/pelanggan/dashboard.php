@@ -147,7 +147,7 @@ $username = htmlspecialchars($_SESSION['user']['username'], ENT_QUOTES, 'UTF-8')
         ?>
     </main>
     <footer>
-        <p>© 2025 Billec. Semua Hak Dilindungi.</p>
+        <p>© 2025 Billec by Arifa Nofriyaldi Chan. Semua Hak Dilindungi.</p>
     </footer>
 </body>
 

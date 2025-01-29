@@ -50,7 +50,7 @@ if (!isset($_SESSION['token']) || $_SESSION['role'] !== 'admin') {
             <input type="text" id="alamat" name="alamat" required>
             <label for="id_tarif">Daya Listrik:</label>
             <select id="id_tarif" name="id_tarif" required>
-                <option value="">Pilih Daya</option>
+                <option value="" select="selected">Pilih Daya</option>
                 <option value="1">450 VA</option>
                 <option value="2">900 VA</option>
                 <option value="3">1300 VA</option>

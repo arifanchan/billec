@@ -73,7 +73,7 @@
 </head>
 <body>
     <h2>Laporan Pembayaran</h2>
-    <div class="action-buttons">
+     <div class="action-buttons">
         <button onclick="cetakLaporan()">Cetak Laporan</button>
         <button onclick="downloadPDF()">Download PDF</button>
     </div>

@@ -149,7 +149,7 @@
         </div>
     </main>
     <footer>
-        <p>© 2025 Billec. Semua Hak Dilindungi.</p>
+        <p>© 2025 Billec by Arifa Nofriyaldi Chan. Semua Hak Dilindungi.</p>
     </footer>
 
     <script>
