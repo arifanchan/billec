@@ -19,7 +19,7 @@ if (!isset($_SESSION['token']) || $_SESSION['role'] !== 'admin') {
     <table>
         <thead>
             <tr>
-                <th>ID Tarif</th>
+                <!-- <th>ID Tarif</th> -->
                 <th>Daya (VA)</th>
                 <th>Tarif per kWh (Rp)</th>
                 <th>Aksi</th>
@@ -62,7 +62,6 @@ if (!isset($_SESSION['token']) || $_SESSION['role'] !== 'admin') {
         const data = await response.json();
         tableBody.innerHTML = data.map(t => `
             <tr>
-                <td>${t.id_tarif}</td>
                 <td>${t.daya}</td>
                 <td>${t.tarifperkwh}</td>
                 <td>
