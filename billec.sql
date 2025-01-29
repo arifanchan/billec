@@ -106,6 +106,33 @@ INSERT INTO pembayaran (id_tagihan, id_pelanggan, tanggal_pembayaran, bulan_baya
  (2, 2, '2024-01-01', 1, 2500, 576280, 1),
  (3, 3, '2024-01-01', 1, 2500, 433410, 1);
 
+
+-- index
+
+CREATE INDEX idx_pelanggan_id_tarif ON pelanggan (id_tarif);
+
+CREATE INDEX idx_pelanggan_username ON pelanggan(username);
+
+CREATE INDEX idx_id_tarif ON pelanggan(id_tarif);
+
+CREATE INDEX idx_id_pelanggan ON penggunaan(id_pelanggan);
+
+CREATE INDEX idx_bulan_tahun ON penggunaan(bulan, tahun);
+
+CREATE INDEX idx_id_penggunaan ON tagihan(id_penggunaan);
+
+CREATE INDEX idx_id_pelanggan_tagihan ON tagihan(id_pelanggan);
+
+CREATE INDEX idx_bulan_tahun_tagihan ON tagihan(bulan, tahun);
+
+CREATE INDEX idx_status ON tagihan(status);
+
+CREATE INDEX idx_id_tagihan ON pembayaran(id_tagihan);
+
+CREATE INDEX idx_id_pelanggan_pembayaran ON pembayaran(id_pelanggan);
+
+
+
 -- View
 CREATE VIEW view_penggunaan_listrik AS
 SELECT 
@@ -120,6 +147,66 @@ FROM
     pelanggan p
 JOIN 
     penggunaan pg ON p.id_pelanggan = pg.id_pelanggan;
+
+CREATE OR REPLACE VIEW view_pelanggan_relevan AS
+SELECT 
+    p.id_pelanggan,
+    p.username,
+    p.nomor_kwh,
+    p.nama_pelanggan,
+    p.alamat,
+    t.daya AS daya_listrik
+FROM 
+    pelanggan p
+JOIN 
+    tarif t ON p.id_tarif = t.id_tarif;
+
+CREATE OR REPLACE VIEW view_tagihan_informatif AS
+SELECT 
+    t.id_tagihan,
+    p.id_pelanggan,
+    p.nama_pelanggan,
+    p.nomor_kwh,
+    tarif.daya AS daya_listrik,
+    t.bulan,
+    t.tahun,
+    t.jumlah_meter,
+    t.total_tagihan,
+    t.status,
+    t.bukti_pembayaran
+FROM 
+    tagihan t
+JOIN 
+    pelanggan p ON t.id_pelanggan = p.id_pelanggan
+JOIN 
+    tarif ON p.id_tarif = tarif.id_tarif;
+
+CREATE OR REPLACE VIEW view_laporan_pembayaran AS
+SELECT 
+    p.id_pembayaran,
+    t.id_tagihan,
+    pel.id_pelanggan,
+    pel.nama_pelanggan,
+    pel.nomor_kwh,
+    tarif.daya AS daya_listrik,
+    t.bulan,
+    t.tahun,
+    t.jumlah_meter,
+    p.biaya_admin,
+    p.tanggal_pembayaran,
+    p.total_bayar,
+    u.nama_admin
+FROM 
+    pembayaran p
+INNER JOIN 
+    tagihan t ON p.id_tagihan = t.id_tagihan
+INNER JOIN 
+    pelanggan pel ON p.id_pelanggan = pel.id_pelanggan
+INNER JOIN 
+    tarif ON pel.id_tarif = tarif.id_tarif
+INNER JOIN 
+    user u ON p.id_user = u.id_user;
+
 
 -- Procedure
 DELIMITER //

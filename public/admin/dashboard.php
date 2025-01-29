@@ -20,25 +20,15 @@ if (!in_array($page, $allowed_pages)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <script defer src="../scripts.js"></script>
     <title>Dashboard Admin</title>
-    <style>
-        nav {
-            margin-bottom: 20px;
-        }
-        nav a {
-            margin-right: 10px;
-            text-decoration: none;
-            color: blue;
-        }
-        .active {
-            font-weight: bold;
-            color: darkblue;
-        }
-    </style>
 </head>
 <body>
+    <header>
     <h1>Dashboard Admin</h1>
     <p>Selamat datang, <?= $_SESSION['user']['nama_admin'] ?>! Anda masuk sebagai <strong><?= ucfirst($_SESSION['role']) ?></strong>.</p>
+    </header>
     <nav>
         <a href="dashboard.php?page=profil" class="<?= $page === 'profil' ? 'active' : '' ?>">Profil</a>
         <a href="dashboard.php?page=pelanggan" class="<?= $page === 'pelanggan' ? 'active' : '' ?>">Data Pelanggan</a>
@@ -76,5 +66,8 @@ if (!in_array($page, $allowed_pages)) {
         }
         ?>
     </div>
+    <footer>
+        <p>© 2025 Billec. Semua Hak Dilindungi.</p>
+    </footer>
 </body>
 </html>

@@ -18,8 +18,7 @@ class TarifController {
 
     // Menambahkan tarif baru
     public function create($data) {
-        $query = "INSERT INTO " . $this->table_name . " (daya, tarifperkwh)
-                  VALUES (:daya, :tarifperkwh)";
+        $query = "INSERT INTO " . $this->table_name . " (daya, tarifperkwh) VALUES (:daya, :tarifperkwh)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":daya", $data->daya);
         $stmt->bindParam(":tarifperkwh", $data->tarifperkwh);
@@ -30,13 +29,13 @@ class TarifController {
         return json_encode(["message" => "Gagal menambahkan tarif."]);
     }
 
-    // Memperbarui tarif
+    // Memperbarui tarif berdasarkan id_tarif
     public function update($data) {
         $query = "UPDATE " . $this->table_name . " 
                   SET tarifperkwh = :tarifperkwh 
-                  WHERE daya = :daya";
+                  WHERE id_tarif = :id_tarif";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":daya", $data->daya);
+        $stmt->bindParam(":id_tarif", $data->id_tarif);
         $stmt->bindParam(":tarifperkwh", $data->tarifperkwh);
 
         if ($stmt->execute()) {
@@ -45,11 +44,11 @@ class TarifController {
         return json_encode(["message" => "Gagal memperbarui tarif."]);
     }
 
-    // Menghapus tarif
-    public function delete($daya) {
-        $query = "DELETE FROM " . $this->table_name . " WHERE daya = :daya";
+    // Menghapus tarif berdasarkan id_tarif
+    public function delete($id_tarif) {
+        $query = "DELETE FROM " . $this->table_name . " WHERE id_tarif = :id_tarif";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":daya", $daya);
+        $stmt->bindParam(":id_tarif", $id_tarif);
 
         if ($stmt->execute()) {
             return json_encode(["message" => "Tarif berhasil dihapus."]);
@@ -57,4 +56,3 @@ class TarifController {
         return json_encode(["message" => "Gagal menghapus tarif."]);
     }
 }
-?>

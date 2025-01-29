@@ -19,12 +19,11 @@ if (!isset($_SESSION['token'])) {
 }
 
 // Middleware: Periksa role pengguna
-$role = $_SESSION['role']; // Role disimpan di sesi (admin/pelanggan)
-$id_pelanggan = $_SESSION['user']['id_pelanggan'] ?? null; // ID pelanggan hanya tersedia untuk pelanggan
+$role = $_SESSION['role'];
+$id_pelanggan = $_SESSION['user']['id_pelanggan'] ?? null;
 
 switch ($method) {
     case 'GET':
-        // Pelanggan hanya bisa melihat tagihan miliknya sendiri
         if ($role === 'pelanggan') {
             if ($id_pelanggan) {
                 echo $controller->getByPelanggan($id_pelanggan);
@@ -33,7 +32,6 @@ switch ($method) {
                 echo json_encode(["message" => "Forbidden. Tidak dapat mengakses data."]);
             }
         } elseif ($role === 'admin') {
-            // Admin dapat melihat semua tagihan
             echo $controller->getAll();
         } else {
             http_response_code(403);
@@ -42,26 +40,29 @@ switch ($method) {
         break;
 
     case 'POST':
-        // Hanya admin yang boleh membuat data tagihan baru
         if ($role === 'admin') {
             $data = json_decode(file_get_contents("php://input"));
-            echo $controller->create($data);
-        
-        // pelanggan dapat mengupload bukti pembayaran
-        } elseif ($role === 'pelanggan') {
-            $data = json_decode(file_get_contents("php://input"));
-            echo $controller->uploadBuktiBayar($id_tagihan, $data);
-        } else {
-            http_response_code(403);
-            echo json_encode(["message" => "Forbidden. Anda tidak memiliki akses."]);
-        }
-        break;
+            echo $controller->validatePayment($data);
+        } elseif ($role === 'pelanggan' && isset($_FILES['bukti_pembayaran']) && isset($_POST['id_tagihan'])) {
+            $id_tagihan = $_POST['id_tagihan'];
+            $file = $_FILES['bukti_pembayaran'];
 
-    case 'PUT':
-        // Hanya admin yang boleh memperbarui status pembayaran
-        if ($role === 'admin') {
-            $data = json_decode(file_get_contents("php://input"));
-            echo $controller->update($data);
+            // Cek apakah file diunggah dengan benar
+            if ($file['error'] !== UPLOAD_ERR_OK) {
+                http_response_code(400);
+                echo json_encode(["message" => "Gagal mengunggah file. Error: " . $file['error']]);
+                exit;
+            }
+
+            // Pastikan file adalah gambar (opsional)
+            $allowed_types = ['image/jpeg', 'image/png', 'image/jpg'];
+            if (!in_array($file['type'], $allowed_types)) {
+                http_response_code(400);
+                echo json_encode(["message" => "Format file tidak didukung. Hanya JPG dan PNG yang diperbolehkan."]);
+                exit;
+            }
+
+            echo $controller->uploadBuktiPembayaran($id_tagihan, $file);
         } else {
             http_response_code(403);
             echo json_encode(["message" => "Forbidden. Anda tidak memiliki akses."]);
@@ -69,7 +70,6 @@ switch ($method) {
         break;
 
     case 'DELETE':
-        // Hanya admin yang boleh menghapus data tagihan
         if ($role === 'admin') {
             $data = json_decode(file_get_contents("php://input"));
             echo $controller->delete($data->id_tagihan);

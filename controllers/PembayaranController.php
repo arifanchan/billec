@@ -9,9 +9,7 @@ class PembayaranController {
 
     // Mendapatkan semua data pembayaran (untuk admin)
     public function getAll() {
-        $query = "SELECT p.*, t.bulan, t.tahun 
-                  FROM " . $this->table_name . " p
-                  INNER JOIN tagihan t ON p.id_tagihan = t.id_tagihan";
+        $query = "SELECT * FROM view_laporan_pembayaran";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -20,15 +18,12 @@ class PembayaranController {
 
     // Mendapatkan data pembayaran berdasarkan pelanggan (untuk pelanggan)
     public function getByPelanggan($id_pelanggan) {
-        $query = "SELECT p.*, t.bulan, t.tahun 
-                  FROM " . $this->table_name . " p
-                  INNER JOIN tagihan t ON p.id_tagihan = t.id_tagihan
-                  WHERE p.id_pelanggan = :id_pelanggan";
+        $query = "SELECT * FROM view_laporan_pembayaran WHERE id_pelanggan = :id_pelanggan";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id_pelanggan', $id_pelanggan);
         $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    
         if ($data) {
             return json_encode($data);
         } else {

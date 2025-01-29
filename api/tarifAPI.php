@@ -19,20 +19,17 @@ if (!isset($_SESSION['token'])) {
 }
 
 // Dapatkan peran pengguna (admin/pelanggan)
-$role = $_SESSION['role']; // Role disimpan di sesi (admin/pelanggan)
-$id_pelanggan = $_SESSION['user']['id_pelanggan'] ?? null; // ID pelanggan hanya tersedia untuk pelanggan
+$role = $_SESSION['role'];
+$id_pelanggan = $_SESSION['user']['id_pelanggan'] ?? null;
 
 switch ($method) {
     case 'GET':
-        // Semua pengguna dapat melihat data tarif
         echo $controller->getAll();
         break;
 
     case 'POST':
-        // Hanya admin yang dapat melakukan operasi POST
         if ($role === 'admin') {
             $data = json_decode(file_get_contents("php://input"));
-
             if (isset($data->daya, $data->tarifperkwh)) {
                 echo $controller->create($data);
             } else {
@@ -42,32 +39,32 @@ switch ($method) {
         } else {
             http_response_code(403);
             echo json_encode(["message" => "Forbidden. Anda tidak memiliki akses."]);
-        } 
+        }
+        break;
+
     case 'PUT':
-        // Hanya admin yang dapat melakukan operasi PUT
         if ($role === 'admin') {
             $data = json_decode(file_get_contents("php://input"));
-
-            if (isset($data->daya, $data->tarifperkwh)) {
+            if (isset($data->id_tarif, $data->tarifperkwh)) {
                 echo $controller->update($data);
             } else {
                 http_response_code(400);
-                echo json_encode(["message" => "Data tidak lengkap. Pastikan daya dan tarifperkwh terisi."]);
+                echo json_encode(["message" => "Data tidak lengkap. Pastikan id_tarif dan tarifperkwh terisi."]);
             }
         } else {
             http_response_code(403);
             echo json_encode(["message" => "Forbidden. Anda tidak memiliki akses."]);
         }
+        break;
+
     case 'DELETE':
-        // Hanya admin yang dapat melakukan operasi POST, PUT, DELETE
         if ($role === 'admin') {
             $data = json_decode(file_get_contents("php://input"));
-
-            if (isset($data->daya)) {
-                echo $controller->delete($data->daya);
+            if (isset($data->id_tarif)) {
+                echo $controller->delete($data->id_tarif);
             } else {
                 http_response_code(400);
-                echo json_encode(["message" => "Data tidak lengkap. Pastikan daya terisi."]);
+                echo json_encode(["message" => "Data tidak lengkap. Pastikan id_tarif terisi."]);
             }
         } else {
             http_response_code(403);
@@ -80,4 +77,3 @@ switch ($method) {
         echo json_encode(["message" => "Method not allowed."]);
         break;
 }
-?>

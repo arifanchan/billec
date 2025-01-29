@@ -11,6 +11,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../styles.css"> -->
     <title>Profil Admin</title>
     <script>
         async function fetchProfile() {
@@ -48,6 +49,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     </script>
 </head>
 <body>
+<div class="form-container">
     <h1>Profil Admin</h1>
     <form id="profile-form" onsubmit="updateProfile(event)">
         <label for="nama_admin">Nama Lengkap:</label><br>
@@ -58,5 +60,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 
         <button type="submit">Simpan Perubahan</button>
     </form>
+</div>
 </body>
 </html>

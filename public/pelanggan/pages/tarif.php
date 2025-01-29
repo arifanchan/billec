@@ -1,3 +1,12 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagihan Saya</title>
+    </head>
 <h2>Daftar Tarif Listrik</h2>
 <table border="1" cellpadding="5" cellspacing="0">
     <thead>

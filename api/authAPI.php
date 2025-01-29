@@ -2,6 +2,7 @@
 include_once '../config/database.php';
 include_once '../controllers/AuthController.php';
 
+
 header("Content-Type: application/json");
 session_start();
 
