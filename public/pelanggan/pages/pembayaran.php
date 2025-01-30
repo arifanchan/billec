@@ -19,9 +19,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'pelanggan') {
             try {
                 const response = await fetch('../../api/pembayaranAPI.php', {
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
+                    headers: {'Content-Type': 'application/json'}
                 });
 
                 if (!response.ok) {

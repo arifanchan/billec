@@ -23,13 +23,7 @@ class PembayaranController {
         $stmt->bindParam(':id_pelanggan', $id_pelanggan);
         $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-        if ($data) {
-            return json_encode($data);
-        } else {
-            http_response_code(404);
-            return json_encode(["message" => "Tidak ada pembayaran untuk pelanggan ini."]);
-        }
+        return json_encode($data);
     }
 
     // Menghapus data pembayaran (hanya admin)
