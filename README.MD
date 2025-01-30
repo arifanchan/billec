@@ -90,4 +90,17 @@ http://localhost/billec/public/
 🔌 Dibuat dengan ❤️ oleh Arifanchan & Kontributor Open Source.
 📌 GitHub: https://github.com/arifanchan/billec
 
-![Halaman Utama]()
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-index.png"></p>
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-admin-dashboard.png"></p>
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-admin-pelanggan.png"></p>
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-admin-penggunaan.png"></p>
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-admin-tagihan.png"></p>
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-admin-pembayaran.png"></p>
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-admin-tarif.png"></p>
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-admin-profil.png"></p>
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-pelanggan-dashboard.png"></p>
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-pelanggan-penggunaan.png"></p>
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-pelanggan-tagihan.png"></p>
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-pelanggan-tarif.png"></p>
+<p><img src="https://raw.githubusercontent.com/arifanchan/public/assets/billec-pelanggan-profil.png"></p>
+
