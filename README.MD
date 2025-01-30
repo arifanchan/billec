@@ -75,8 +75,8 @@ http://localhost/billec/public/
 
 ## 🔑 Akun Default
 ### Role
-- Admin: username: admin	password: admin
-- Pelanggan:	username: arifchan password:
+- **Admin** username: admin	password: admin
+- **Pelanggan**	username: arifachan password: 123
 
 ## 🏆 Fitur Tambahan yang Akan Datang
 - 🔗 Integrasi Payment Gateway untuk pembayaran langsung.
