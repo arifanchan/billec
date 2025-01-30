@@ -1,6 +1,6 @@
 <?php
-// Validasi sesi
-if (!isset($_SESSION['user'])) {
+// Pastikan pengguna adalah pelanggan
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'pelanggan') {
     header("Location: ../index.php");
     exit();
 }

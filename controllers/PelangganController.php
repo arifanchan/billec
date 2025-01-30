@@ -96,6 +96,10 @@ class PelangganController {
             if (!empty($data->password)) {
                 $query .= ", password = :password";
             }
+
+            if (!empty($data->id_tarif)) {
+                $query .= ", id_tarif = :id_tarif";
+            }
     
             $query .= " WHERE id_pelanggan = :id_pelanggan";
             $stmt = $this->conn->prepare($query);

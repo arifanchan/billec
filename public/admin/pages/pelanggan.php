@@ -40,7 +40,7 @@ if (!isset($_SESSION['token']) || $_SESSION['role'] !== 'admin') {
             <input type="hidden" id="id_pelanggan" name="id_pelanggan">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
+            <label for="password">Password Baru (Optional):</label>
             <input type="password" id="password" name="password">
             <label for="nomor_kwh">Nomor KWH:</label>
             <input type="text" id="nomor_kwh" name="nomor_kwh" required>

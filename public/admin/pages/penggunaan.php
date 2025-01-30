@@ -1,8 +1,7 @@
 <?php
-
-// Pastikan hanya admin yang dapat mengakses halaman ini
-if (!isset($_SESSION['token']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../index.php"); // Redirect jika bukan admin atau belum login
+// Pastikan pengguna adalah admin
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../index.php");
     exit();
 }
 ?>
