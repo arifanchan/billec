@@ -90,7 +90,7 @@ http://localhost/billec/public/
 🔌 Dibuat dengan ❤️ oleh Arifanchan & Kontributor Open Source.
 📌 GitHub: https://github.com/arifanchan/billec
 
-![Halaman Utama](https://raw.githubusercontent.com/arifanchan/billec/public/assets/billec-index.png)
+![Halaman Utama](https://raw.githubusercontent.com/arifanchan/billec/main/public/assets/billec-index.png)
 ![Halaman Utama](https://raw.githubusercontent.com/arifanchan/billec/public/assets/billec-admin-dashboard.png)
 ![Halaman Utama](https://raw.githubusercontent.com/arifanchan/billec/public/assets/billec-admin-pelanggan.png)
 ![Halaman Utama](https://raw.githubusercontent.com/arifanchan/billec/public/assets/billec-admin-penggunaan.png)
