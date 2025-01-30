@@ -43,6 +43,11 @@ if (!isset($_SESSION['user'])) {
             }
             const penggunaan = await response.json();
             const tableBody = document.getElementById("penggunaan-table-body");
+
+            if (!penggunaan || penggunaan.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="9">Tidak ada data penggunaan.</td></tr>`;
+                    return;
+                }
             penggunaan.forEach(p => {
                 const row = `
                     <tr>

@@ -22,12 +22,13 @@
 
                 const pembayaran = await response.json();
                 const tableBody = document.getElementById('pembayaran-table-body');
-                tableBody.innerHTML = ""; // Kosongkan tabel sebelum menambahkan data baru
 
-                if (pembayaran.length === 0) {
-                    tableBody.innerHTML = `<tr><td colspan="8">Tidak ada riwayat pembayaran.</td></tr>`;
+                if (!pembayaran || pembayaran.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="9">Tidak ada data pembayaran.</td></tr>`;
                     return;
                 }
+                tableBody.innerHTML = ""; // Kosongkan tabel sebelum menambahkan data baru
+
 
                 pembayaran.forEach(p => {
                     const row = `

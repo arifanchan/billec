@@ -24,15 +24,15 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'pelanggan') {
                     throw new Error("Gagal memuat data tagihan.");
                 }
 
-                const data = await response.json();
+                const tagihan = await response.json();
                 const tableBody = document.getElementById("tagihan-table-body");
 
-                if (!data || data.length === 0) {
+                if (!tagihan || tagihan.length === 0) {
                     tableBody.innerHTML = `<tr><td colspan="9">Tidak ada data tagihan.</td></tr>`;
                     return;
                 }
 
-                tableBody.innerHTML = data.map(t => `
+                tableBody.innerHTML = tagihan.map(t => `
                     <tr>
                         <td>${t.bulan}</td>
                         <td>${t.tahun}</td>
