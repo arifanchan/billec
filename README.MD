@@ -114,5 +114,5 @@ http://localhost/billec/public/
 
 ![Pelanggan Tarif](https://raw.githubusercontent.com/arifanchan/billec/main/public/assets/billec-pelanggan-tarif.png)
 
-![Pelanggan Profil](https://raw.githubusercontent.com/arifanchan/billec/main/public/assets/billec-pelanggan-profil.png)
+![Pelanggan Profil](https://raw.githubusercontent.com/arifanchan/billec/main/public/assets/billec-pelanggan-profi.png)
 
