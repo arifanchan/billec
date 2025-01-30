@@ -39,15 +39,14 @@ billec/
 ├── public/            # Halaman utama aplikasi
 │   ├── admin/         # Panel admin
 │   ├── pelanggan/     # Panel pelanggan
-│   ├── assets/        # Gambar, CSS, JavaScript
-│   ├── uploads/       # Direktori bukti pembayaran
-├── styles.css         # Styling utama
-├── scripts.js         # JavaScript utama
+|   ├── styles.css     # Styling utama
+|   ├── scripts.js     # JavaScript utama
+├── uploads/           # Direktori bukti pembayaran
 ├── README.md          # Dokumentasi proyek
 └── .gitignore         # Mengabaikan file yang tidak diperlukan
 ```
 
-** Client -> Web App -> API -> Backend Controller -> Database **
+**Client -> Web App -> API -> Backend Controller -> Database**
 
 ## Cara Instalasi & Menjalankan Aplikasi
 ### 1. Clone Repository
