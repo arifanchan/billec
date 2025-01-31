@@ -61,7 +61,7 @@ cd billec
 3. Konfigurasi koneksi database di config/database.php:
 ```
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'billec_db');
+define('DB_NAME', 'billec');
 define('DB_USER', 'root');  // Sesuaikan username database
 define('DB_PASS', '');      // Sesuaikan password database
 ```
@@ -111,6 +111,8 @@ http://localhost/billec/public/
 ![Pelanggan Penggunaan](https://raw.githubusercontent.com/arifanchan/billec/main/public/assets/billec-pelanggan-penggunaan.png)
 
 ![Pelanggan Tagihan](https://raw.githubusercontent.com/arifanchan/billec/main/public/assets/billec-pelanggan-tagihan.png)
+
+![Pelanggan Tagihan](https://raw.githubusercontent.com/arifanchan/billec/main/public/assets/billec-pelanggan-pembayaran.png)
 
 ![Pelanggan Tarif](https://raw.githubusercontent.com/arifanchan/billec/main/public/assets/billec-pelanggan-tarif.png)
 
