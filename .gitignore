@@ -1,5 +1,9 @@
 .env
-/docs
+/docs/docbook
+/docs/latex
+/docs/man
+/docs/rtf
+/docs/xml
 Doxyfile
 doxygen_log.txt
-api/debug.log
+/api/debug.log
