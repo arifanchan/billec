@@ -112,6 +112,8 @@ http://localhost/billec/public/
 
 ![Pelanggan Tagihan](https://raw.githubusercontent.com/arifanchan/billec/main/public/assets/billec-pelanggan-tagihan.png)
 
+![Pelanggan Tagihan](https://raw.githubusercontent.com/arifanchan/billec/main/public/assets/billec-pelanggan-pembayaran.png)
+
 ![Pelanggan Tarif](https://raw.githubusercontent.com/arifanchan/billec/main/public/assets/billec-pelanggan-tarif.png)
 
 ![Pelanggan Profil](https://raw.githubusercontent.com/arifanchan/billec/main/public/assets/billec-pelanggan-profi.png)
