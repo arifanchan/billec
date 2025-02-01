@@ -1,0 +1,35 @@
+# Aktifkan mod_rewrite
+RewriteEngine On
+
+# Mencegah tampilan isi folder
+Options -Indexes
+
+# Redirect akses langsung ke folder public ke public/index.php
+RewriteCond %{REQUEST_URI} ^/public/?$
+RewriteRule ^(.*)$ /public/index.php [L]
+
+# Redirect semua request yang bukan file atau folder langsung ke index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Blokir akses langsung ke file sensitif
+<FilesMatch "(^\.ht|config\.php|database\.php|composer\.json|composer\.lock)">
+    Require all denied
+</FilesMatch>
+
+# Blokir akses langsung ke folder API & Controllers
+RewriteRule ^(controllers|config)/ - [F,L]
+
+# Izinkan hanya file penting (gambar, CSS, JS, font, dll.)
+<FilesMatch "\.(jpg|jpeg|png|gif|css|js|ico|svg|woff|woff2|ttf|eot|otf|html)$">
+    Require all granted
+</FilesMatch>
+
+# Blokir file backup/database dump
+<FilesMatch "\.(sql|bak|zip|tar|gz|log|sh)$">
+    Require all denied
+</FilesMatch>
+
+# Nonaktifkan Signature Apache (keamanan tambahan)
+ServerSignature Off
