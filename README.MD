@@ -56,12 +56,12 @@ cd billec
 ```
 
 ### 2. Konfigurasi Database
-1. Buat database di MySQL (misalnya billec_db).
+1. Buat database di MySQL (misalnya billec).
 2. Import file SQL dari database/billec.sql.
 3. Konfigurasi koneksi database di config/database.php:
 ```
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'billec_db');
+define('DB_NAME', 'billec');
 define('DB_USER', 'root');  // Sesuaikan username database
 define('DB_PASS', '');      // Sesuaikan password database
 ```

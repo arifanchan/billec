@@ -1,4 +1,8 @@
 <?php
+/**
+ * Pelanggan dapat melihat daftar tarif listrik yang berlaku
+ */
+
 // Pastikan pengguna adalah pelanggan
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'pelanggan') {
     header("Location: ../index.php");

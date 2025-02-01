@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * Halaman: Profil Pelanggan
+ * File: profil.php
+ * 
+ * Tampilan profil pelanggan yang dapat diakses oleh pelanggan
+ * 
+ * @package Pelanggan
+ */
 // Validasi sesi pelanggan
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'pelanggan') {
     header("Location: ../index.php");

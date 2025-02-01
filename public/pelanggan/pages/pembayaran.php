@@ -1,4 +1,7 @@
 <?php
+/**
+ * Halaman untuk menampilkan riwayat pembayaran pelanggan
+ */
 // Pastikan pengguna adalah pelanggan
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'pelanggan') {
     header("Location: ../index.php");

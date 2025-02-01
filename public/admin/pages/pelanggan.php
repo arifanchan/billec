@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Halaman manajemen pelanggan
+ * 
+ * File ini berisi halaman manajemen pelanggan yang hanya dapat diakses oleh admin.
+ * 
+ * @package Billec
+ */
 // Pastikan pengguna adalah admin
 
 if (!isset($_SESSION['token']) || $_SESSION['role'] !== 'admin') {

@@ -1,4 +1,8 @@
 <?php
+/**
+ * File ini berisi endpoint API untuk tarif
+ */
+
 include_once '../config/database.php';
 include_once '../controllers/TarifController.php';
 

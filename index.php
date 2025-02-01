@@ -1,4 +1,7 @@
+<!-- Mulai session -->
 session_start();
+
+<!-- Cek apakah token sudah diset atau belum -->
 <?php
 header("Location: public/index.php");
 exit();

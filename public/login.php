@@ -1,4 +1,6 @@
 <?php session_start(); ?>
+
+<!-- Halaman login -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,17 +155,22 @@
     </footer>
 
     <script>
+    // Event listener untuk form login
     document.getElementById("login-form").addEventListener("submit", async function (e) {
         e.preventDefault();
 
+
+        // Ambil data dari form
         const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value.trim();
 
+        // Validasi form
         if (username === "" || password === "") {
             document.getElementById("message").textContent = "Username dan password tidak boleh kosong.";
             return;
         }
-
+        
+        // Kirim data ke server
         try {
             const response = await fetch("../api/authAPI.php", {
                 method: "POST",
@@ -179,6 +186,7 @@
 
             const result = await response.json();
 
+            // Jika login berhasil, redirect ke halaman dashboard
             if (response.ok) {
                 if (result.role === "admin") {
                     window.location.href = "admin/dashboard.php";

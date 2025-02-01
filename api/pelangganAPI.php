@@ -1,11 +1,14 @@
 <?php
-include_once '../config/database.php';
-include_once '../controllers/PelangganController.php';
+/**
+ * File ini berisi endpoint API untuk entitas Pelanggan
+ */
+include_once '../config/database.php'; // impor file database.php
+include_once '../controllers/PelangganController.php'; // impor file PelangganController.php
 
 session_start();
 
-header("Content-Type: application/json");
-$method = $_SERVER['REQUEST_METHOD'];
+header("Content-Type: application/json"); // set response berupa JSON
+$method = $_SERVER['REQUEST_METHOD']; // ambil method request
 
 // Middleware: Cek apakah pengguna sudah login
 if (!isset($_SESSION['token'])) {

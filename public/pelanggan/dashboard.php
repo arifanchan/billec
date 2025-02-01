@@ -1,4 +1,9 @@
 <?php
+/**
+ * Halaman dashboard pelanggan
+ * 
+ * @package Billec
+ */
 session_start();
 
 // Validasi token dan role pelanggan

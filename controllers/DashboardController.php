@@ -1,4 +1,15 @@
 <?php
+/**
+ * Class DashboardController
+ * 
+ * @method getDashboardStats
+ * @method getAdminStats
+ * @method getPelangganStats
+ * @method getCount
+ * @method getSum
+ * 
+ * Class ini digunakan untuk mengatur data statistik dashboard
+ */
 class DashboardController {
     private $conn;
 
@@ -6,6 +17,24 @@ class DashboardController {
         $this->conn = $db;
     }
 
+    /**
+     * Fungsi getDashboardStats
+     * 
+     * Fungsi ini digunakan untuk mendapatkan statistik dashboard
+     * 
+     * @param string $role
+     * @param int $id_pelanggan
+     * @return array
+     * 
+     * Endpoint: GET /api/dashboardAPI.php
+     * 
+     * Response body:
+     * - total_pelanggan: int
+     * - total_tagihan: int
+     * - tagihan_belum_bayar: int
+     * - tagihan_lunas: int
+     * - total_pembayaran: int
+     */
     public function getDashboardStats($role, $id_pelanggan = null) {
         if ($role === "admin") {
             return $this->getAdminStats();
@@ -16,7 +45,13 @@ class DashboardController {
         }
     }
 
-    // Statistik untuk Admin
+    /**
+     * Fungsi getAdminStats
+     * 
+     * Fungsi ini digunakan untuk mendapatkan statistik dashboard untuk admin
+     * 
+     * @return array
+     */
     private function getAdminStats() {
         return [
             "total_pelanggan" => $this->getCount("pelanggan"),
@@ -27,7 +62,14 @@ class DashboardController {
         ];
     }
 
-    // Statistik untuk Pelanggan
+    /**
+     * Fungsi getPelangganStats
+     * 
+     * Fungsi ini digunakan untuk mendapatkan statistik dashboard untuk pelanggan
+     * 
+     * @param int $id_pelanggan
+     * @return array
+     */
     private function getPelangganStats($id_pelanggan) {
         return [
             "total_tagihan" => $this->getCount("tagihan", "id_pelanggan = $id_pelanggan"),
@@ -37,7 +79,15 @@ class DashboardController {
         ];
     }
 
-    // Helper: Menghitung jumlah data di tabel
+    /**
+     * Fungsi getCount
+     * 
+     * Fungsi ini digunakan untuk menghitung total baris di tabel
+     * 
+     * @param string $table
+     * @param string $where
+     * @return int
+     */
     private function getCount($table, $where = "1") {
         $query = "SELECT COUNT(*) AS total FROM $table WHERE $where";
         $stmt = $this->conn->prepare($query);
@@ -45,12 +95,21 @@ class DashboardController {
         return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
     }
 
-    // Helper: Menghitung total sum dari suatu kolom di tabel
+    /* Fungsi getSum
+     * 
+     * Fungsi ini digunakan untuk menghitung total nilai kolom di tabel
+     * 
+     * @param string $table
+     * @param string $column
+     * @param string $where
+     * @return int
+     */
     private function getSum($table, $column, $where = "1") {
         $query = "SELECT SUM($column) AS total FROM $table WHERE $where";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
     }
-}
+} 
 ?>
+

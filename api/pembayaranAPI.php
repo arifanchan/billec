@@ -1,4 +1,7 @@
 <?php
+/**
+ * File ini berisi endpoint API untuk pembayaran
+ */
 include_once '../config/database.php';
 include_once '../controllers/PembayaranController.php';
 

@@ -501,3 +501,131 @@ Raw Input: {"action":"login","username":"admin","password":"admin"}
 Decoded JSON: {"action":"login","username":"admin","password":"admin"}
 Raw Input: {"action":"login","username":"arifachan","password":"123"}
 Decoded JSON: {"action":"login","username":"arifachan","password":"123"}
+Raw Input: {"action":"login","username":"admin","password":"admin"}
+Decoded JSON: {"action":"login","username":"admin","password":"admin"}
+Raw Input: {
+    "action": "login",
+    "username": "arifachan",
+    "password": "123"
+}
+Decoded JSON: {"action":"login","username":"arifachan","password":"123"}
+Raw Input: {"action":"login","username":"admin","password":"admin"}
+Decoded JSON: {"action":"login","username":"admin","password":"admin"}
+Raw Input: {
+    "action": "logout"
+}
+Decoded JSON: {"action":"logout"}
+Raw Input: {"action":"login","username":"arifachan","password":"123"}
+Decoded JSON: {"action":"login","username":"arifachan","password":"123"}
+Raw Input: {"action":"login","username":"admin","password":"admin"}
+Decoded JSON: {"action":"login","username":"admin","password":"admin"}
+Raw Input: {"action":"login","username":"arifachan","password":"123"}
+Decoded JSON: {"action":"login","username":"arifachan","password":"123"}
+Raw Input: {
+    "action": "login",
+    "username": "admin",
+    "password": "admin"
+}
+Decoded JSON: {"action":"login","username":"admin","password":"admin"}
+Raw Input: {
+    "action": "login",
+    "username": "arifachan",
+    "password": "123"
+}
+Decoded JSON: {"action":"login","username":"arifachan","password":"123"}
+Raw Input: {
+    "action": "logout"
+}
+Decoded JSON: {"action":"logout"}
+Raw Input: {"action":"login","username":"prilly","password":"123"}
+Decoded JSON: {"action":"login","username":"prilly","password":"123"}
+Raw Input: {"action":"login","username":"admin","password":"admin"}
+Decoded JSON: {"action":"login","username":"admin","password":"admin"}
+Raw Input: {"action":"login","username":"prilly","password":"123"}
+Decoded JSON: {"action":"login","username":"prilly","password":"123"}
+Raw Input: {"action":"login","username":"admin","password":"admin"}
+Decoded JSON: {"action":"login","username":"admin","password":"admin"}
+Raw Input: {"action":"login","username":"prilly","password":"123"}
+Decoded JSON: {"action":"login","username":"prilly","password":"123"}
+Raw Input: {
+    "action": "logout"
+}
+Decoded JSON: {"action":"logout"}
+Raw Input: {"action":"login","username":"admin","password":"admin"}
+Decoded JSON: {"action":"login","username":"admin","password":"admin"}
+Raw Input: {"action":"login","username":"admin","password":"balittriadm321"}
+Decoded JSON: {"action":"login","username":"admin","password":"balittriadm321"}
+Raw Input: {"action":"login","username":"admin","password":"admin"}
+Decoded JSON: {"action":"login","username":"admin","password":"admin"}
+Raw Input: {"action":"login","username":"arifachan","password":"123"}
+Decoded JSON: {"action":"login","username":"arifachan","password":"123"}
+Raw Input: {
+    "action": "login",
+    "username": "admin",
+    "password": "admin"
+}
+Decoded JSON: {"action":"login","username":"admin","password":"admin"}
+Raw Input: {
+    "action": "login",
+    "username": "arifachan",
+    "password": "123"
+}
+Decoded JSON: {"action":"login","username":"arifachan","password":"123"}
+Raw Input: {
+    "action": "logout"
+}
+Decoded JSON: {"action":"logout"}
+Raw Input: {
+    "action": "login",
+    "username": "admin",
+    "password": "admin123"
+}
+Decoded JSON: {"action":"login","username":"admin","password":"admin123"}
+Raw Input: {
+    "action": "login",
+    "username": "admin",
+    "password": "admin"
+}
+Decoded JSON: {"action":"login","username":"admin","password":"admin"}
+Raw Input: {
+    "action": "logout"
+}
+Decoded JSON: {"action":"logout"}
+Raw Input: {
+    "action": "login",
+    "username": "arifachan",
+    "password": "123"
+}
+Decoded JSON: {"action":"login","username":"arifachan","password":"123"}
+Raw Input: {
+    "action": "login",
+    "username": "admin",
+    "password": "admin"
+}
+Decoded JSON: {"action":"login","username":"admin","password":"admin"}
+Raw Input: {
+    "action": "login",
+    "username": "arifachan",
+    "password": "123"
+}
+Decoded JSON: {"action":"login","username":"arifachan","password":"123"}
+Raw Input: {
+    "action": "logout"
+}
+Decoded JSON: {"action":"logout"}
+Raw Input: {
+    "action": "login",
+    "username": "admin",
+    "password": "admin"
+}
+Decoded JSON: {"action":"login","username":"admin","password":"admin"}
+Raw Input: {
+    "action": "login",
+    "username": "arifachan",
+    "password": "123"
+}
+Decoded JSON: {"action":"login","username":"arifachan","password":"123"}
+Raw Input: {
+    "action": "logout"
+}
+Decoded JSON: {"action":"logout"}

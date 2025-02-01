@@ -1,4 +1,9 @@
 <?php
+/**
+ * Halaman manajemen tagihan
+ * 
+ * @package Billec
+ */
 // Pastikan pengguna adalah admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../index.php");

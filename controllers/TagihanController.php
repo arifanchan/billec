@@ -1,13 +1,28 @@
 <?php
+
+/**
+ * Class TagihanController
+ * Digunakan untuk mengatur data tagihan
+ * @method getAll() : string
+ * @method getByPelanggan($id_pelanggan) : string
+ * @method validatePayment($data) : string
+ * @method uploadBuktiPembayaran($id_tagihan, $file) : string
+ * @method delete($id_tagihan) : string
+ */
 class TagihanController {
     private $conn;
-    private $table_name = "view_tagihan_informatif";
+    private $table_name = "view_tagihan_informatif"; // Menggunakan VIEW untuk informasi yang relevan
 
     public function __construct($db) {
         $this->conn = $db;
     }
 
     // Mendapatkan semua data tagihan (untuk admin)
+    /**
+     * Function untuk mengambil semua data tagihan
+     * Endpoint: /api/tagihanAPI.php
+     * @return string
+     */
     public function getAll() {
         $query = "SELECT * FROM " . $this->table_name;
         $stmt = $this->conn->prepare($query);
@@ -17,6 +32,12 @@ class TagihanController {
     }
 
     // Mendapatkan data tagihan berdasarkan id_pelanggan (untuk pelanggan)
+    /**
+     * Function untuk mengambil data tagihan berdasarkan ID pelanggan
+     * Endpoint: /api/tagihanAPI.php?id_pelanggan=1
+     * @param $id_pelanggan
+     * @return string
+     */
     public function getByPelanggan($id_pelanggan) {
         $query = "SELECT * FROM " . $this->table_name . " WHERE id_pelanggan = :id_pelanggan";
         $stmt = $this->conn->prepare($query);
@@ -27,6 +48,12 @@ class TagihanController {
     }
 
     // Memperbarui status tagihan setelah validasi bukti pembayaran
+    /**
+     * Function untuk memvalidasi pembayaran
+     * Endpoint: /api/tagihanAPI.php
+     * @param $data
+     * @return string
+     */
     public function validatePayment($data) {
         $query = "UPDATE tagihan 
                   SET status = 'lunas', bukti_pembayaran = :bukti_pembayaran 
@@ -42,6 +69,13 @@ class TagihanController {
     }
 
     // Upload bukti pembayaran (khusus pelanggan)
+    /**
+     * Function untuk mengunggah bukti pembayaran
+     * Endpoint: /api/tagihanAPI.php
+     * @param $id_tagihan
+     * @param $file
+     * @return string
+     */
     public function uploadBuktiPembayaran($id_tagihan, $file) {
         // Pastikan tagihan ada dan statusnya belum lunas
         $query = "SELECT * FROM tagihan WHERE id_tagihan = :id_tagihan AND status = 'belum bayar'";
@@ -84,6 +118,12 @@ class TagihanController {
     }
 
     // Menghapus data tagihan (untuk admin)
+    /**
+     * Function untuk menghapus data tagihan
+     * Endpoint: /api/tagihanAPI.php
+     * @param $id_tagihan
+     * @return string
+     */
     public function delete($id_tagihan) {
         $query = "DELETE FROM tagihan WHERE id_tagihan = :id_tagihan";
         $stmt = $this->conn->prepare($query);

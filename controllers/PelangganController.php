@@ -1,4 +1,14 @@
 <?php
+
+/**
+ * Class PelangganController
+ * Digunakan untuk mengatur data pelanggan
+ * @method getAll() : string
+ * @method getById($id_pelanggan) : string
+ * @method create($data) : string
+ * @method update($data) : string
+ * @method delete($id_pelanggan) : string
+ */
 class PelangganController {
     private $conn;
     private $table_name = "view_pelanggan_relevan"; // Menggunakan VIEW untuk informasi yang relevan
@@ -7,6 +17,11 @@ class PelangganController {
         $this->conn = $db;
     }
 
+    /**
+     * Function untuk mengambil semua data pelanggan
+     * Endpoint: /api/pelangganAPI.php
+     * @return string
+     */
     // Mendapatkan semua data pelanggan (khusus admin)
     public function getAll() {
         $query = "SELECT * FROM " . $this->table_name;
@@ -15,8 +30,13 @@ class PelangganController {
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($data);
     }
-
-    // Mendapatkan data pelanggan berdasarkan ID pelanggan (untuk pelanggan)
+    
+    /**
+     * Function untuk mengambil data pelanggan berdasarkan ID pelanggan
+     * Endpoint: /api/pelangganAPI.php?id_pelanggan=1
+     * @param $id_pelanggan
+     * @return string
+     */
     public function getById($id_pelanggan) {
         $query = "SELECT * FROM " . $this->table_name . " WHERE id_pelanggan = :id_pelanggan";
         $stmt = $this->conn->prepare($query);
@@ -32,8 +52,14 @@ class PelangganController {
         return json_encode(["message" => "Data pelanggan tidak ditemukan"]);
     }
 
-    // Membuat data pelanggan baru (hanya untuk admin)
+    /**
+     * Function untuk menambahkan data pelanggan
+     * Endpoint: /api/pelangganAPI.php
+     * @param $data
+     * @return string
+     */
     public function create($data) {
+        // Menghindari SQL Injection
         $username = htmlspecialchars($data->username, ENT_QUOTES, 'UTF-8');
         $password = password_hash($data->password, PASSWORD_BCRYPT); // Hash password
         $nomor_kwh = htmlspecialchars($data->nomor_kwh, ENT_QUOTES, 'UTF-8');
@@ -57,8 +83,14 @@ class PelangganController {
         return json_encode(["message" => "Gagal menambahkan pelanggan"]);
     }
 
-    // Memperbarui data pelanggan
+    /**
+     * Function untuk mengupdate data pelanggan
+     * Endpoint: /api/pelangganAPI.php
+     * @param $data
+     * @return string
+     */
     public function update($data) {
+        // Menghindari SQL Injection
         $nama_pelanggan = htmlspecialchars($data->nama_pelanggan, ENT_QUOTES, 'UTF-8');
         $alamat = htmlspecialchars($data->alamat, ENT_QUOTES, 'UTF-8');
         $id_pelanggan = (int) $data->id_pelanggan;
@@ -122,7 +154,12 @@ class PelangganController {
         return json_encode(["message" => "Gagal memperbarui pelanggan"]);
     }
 
-    // Menghapus pelanggan (hanya untuk admin)
+    /**
+     * Function untuk menghapus data pelanggan
+     * Endpoint: /api/pelangganAPI.php
+     * @param $id_pelanggan
+     * @return string
+     */
     public function delete($id_pelanggan) {
         $query = "DELETE FROM pelanggan WHERE id_pelanggan = :id_pelanggan";
         $stmt = $this->conn->prepare($query);

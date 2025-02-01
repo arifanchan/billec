@@ -1,4 +1,11 @@
 <?php
+/**
+ * File migrasi
+ * 
+ * File ini berisi script untuk melakukan migrasi password pelanggan ke hash baru
+ * 
+ * @package Billec
+ */
 include_once '../config/database.php';
 session_start();
 $database = new Database();

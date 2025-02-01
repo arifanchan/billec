@@ -1,4 +1,7 @@
 <?php
+/**
+ * File ini berisi endpoint API untuk penggunaan
+ */
 include_once '../config/database.php';
 include_once '../controllers/PenggunaanController.php';
 

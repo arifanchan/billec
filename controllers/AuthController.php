@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Class AuthController
+ * 
+ * Kelas ini berisi fungsi-fungsi untuk login dan logout
+ * 
+ * @method login
+ * @method logout
+ * 
+ */
 class AuthController {
     private $conn;
     private $table_user = "user";       // Tabel admin
@@ -9,7 +18,28 @@ class AuthController {
         $this->conn = $db;
     }
 
-    // Fungsi login
+
+    /**
+     * Fungsi login
+     * 
+     * Fungsi ini digunakan untuk login sebagai admin atau pelanggan
+     * 
+     * @param object $data
+     * @return string
+     * 
+     * Endpoint: POST /api/authAPI.php
+     * 
+     * Request body:
+     * - username: string
+     * - password: string
+     * 
+     * Response body:
+     * - message: string
+     * - token: string
+     * - role: string
+     * - user: object
+     */
+
     public function login($data) {
         // Validasi input (pastikan username dan password tidak kosong)
         if (empty($data->username) || empty($data->password)) {
@@ -86,7 +116,18 @@ class AuthController {
         return json_encode(["message" => "Username atau password salah"]);
     }
 
-    // Fungsi logout
+    /**
+     * Fungsi logout
+     * 
+     * Fungsi ini digunakan untuk logout
+     * 
+     * @return string
+     * 
+     * Endpoint: POST /api/authAPI.php
+     * 
+     * Response body:
+     * - message: string
+     */
     public function logout() {
         session_destroy();
         return json_encode(["message" => "Logout berhasil"]);

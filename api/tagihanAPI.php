@@ -1,4 +1,7 @@
 <?php
+/**
+ * File ini berisi endpoint API untuk tagihan
+ */
 include_once '../config/database.php';
 include_once '../controllers/TagihanController.php';
 

@@ -1,4 +1,11 @@
 <?php
+/**
+ * Dashboard Admin
+ * 
+ * Halaman dashboard admin untuk mengelola data pelanggan, penggunaan, tagihan, pembayaran, tarif, dan profil.
+ * 
+ * @package Billec
+ */
 session_start();
 
 // Validasi token dan role admin

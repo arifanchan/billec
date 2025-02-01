@@ -1,4 +1,11 @@
 <?php
+/**
+ * Halaman manajemen penggunaan listrik
+ * 
+ * File ini berisi halaman manajemen penggunaan listrik oleh admin.
+ * 
+ * @package Billec
+ */
 // Pastikan pengguna adalah admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../index.php");

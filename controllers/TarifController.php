@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * Class TarifController
+ * Digunakan untuk mengatur data tarif
+ * @method getAll() : string
+ * @method create($data) : string
+ * @method update($data) : string
+ * @method delete($id_tarif) : string
+ */
 class TarifController {
     private $conn;
     private $table_name = "tarif";
@@ -8,6 +17,11 @@ class TarifController {
     }
 
     // Mendapatkan semua data tarif
+    /**
+     * Function untuk mengambil semua data tarif
+     * Endpoint: /api/tarifAPI.php
+     * @return string
+     */
     public function getAll() {
         $query = "SELECT * FROM " . $this->table_name;
         $stmt = $this->conn->prepare($query);
@@ -17,6 +31,12 @@ class TarifController {
     }
 
     // Menambahkan tarif baru
+    /**
+     * Function untuk menambahkan data tarif
+     * Endpoint: /api/tarifAPI.php
+     * @param $data
+     * @return string
+     */
     public function create($data) {
         $query = "INSERT INTO " . $this->table_name . " (daya, tarifperkwh) VALUES (:daya, :tarifperkwh)";
         $stmt = $this->conn->prepare($query);
@@ -30,6 +50,12 @@ class TarifController {
     }
 
     // Memperbarui tarif berdasarkan id_tarif
+    /**
+     * Function untuk memperbarui data tarif
+     * Endpoint: /api/tarifAPI.php
+     * @param $data
+     * @return string
+     */
     public function update($data) {
         $query = "UPDATE " . $this->table_name . " 
                   SET tarifperkwh = :tarifperkwh 
@@ -45,6 +71,12 @@ class TarifController {
     }
 
     // Menghapus tarif berdasarkan id_tarif
+    /**
+     * Function untuk menghapus data tarif
+     * Endpoint: /api/tarifAPI.php
+     * @param $id_tarif
+     * @return string
+     */
     public function delete($id_tarif) {
         $query = "DELETE FROM " . $this->table_name . " WHERE id_tarif = :id_tarif";
         $stmt = $this->conn->prepare($query);

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Halaman: penggunaan.php
+ * Tujuan: Menampilkan data penggunaan listrik pelanggan
+ * Fitur: Pelanggan dapat melihat data penggunaan listrik mereka
+ */
 // Pastikan pengguna adalah pelanggan
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'pelanggan') {
     header("Location: ../index.php");

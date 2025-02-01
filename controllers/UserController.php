@@ -8,6 +8,12 @@ class UserController {
     }
 
     // Mendapatkan data admin berdasarkan ID
+    /**
+     * Function untuk mengambil data admin berdasarkan ID
+     * Endpoint: /api/userAPI.php?id_user=1
+     * @param $id_user
+     * @return array
+     */
     public function getById($id_user) {
         $query = "SELECT * FROM " . $this->table_name . " WHERE id_user = :id_user";
         $stmt = $this->conn->prepare($query);
@@ -17,8 +23,15 @@ class UserController {
     }
 
     // Memperbarui profil admin
+    /**
+     * Function untuk memperbarui profil admin
+     * Endpoint: /api/userAPI.php
+     * @param $data
+     * @return array
+     */
     public function updateProfile($data) {
         $query = "UPDATE " . $this->table_name . " SET nama_admin = :nama_admin";
+        // Jika password kosong, maka password tidak diupdate
         if (!empty($data->password)) {
             $query .= ", password = :password";
         }
@@ -26,6 +39,7 @@ class UserController {
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":nama_admin", $data->nama_admin);
+        // Jika password tidak kosong, maka password akan diupdate
         if (!empty($data->password)) {
             $hashed_password = password_hash($data->password, PASSWORD_BCRYPT);
             $stmt->bindParam(":password", $hashed_password);

@@ -1,5 +1,12 @@
 <?php
-require_once __DIR__ . '/env.php';
+/**
+ * File konfigurasi database
+ * 
+ * File ini berisi konfigurasi koneksi ke database MySQL.
+ * 
+ * @package Billec
+ */
+require_once __DIR__ . '/env.php'; // Load file env.php
 
 class Database {
     private $conn;
@@ -14,7 +21,11 @@ class Database {
         $this->password = getenv('DB_PASSWORD');
         $this->port = getenv('DB_PORT');
     }
-
+    /**
+     * Function untuk mendapatkan koneksi database
+     * 
+     * @return PDO
+     */
     public function getConnection() {
         $this->conn = null;
 

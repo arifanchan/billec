@@ -1,4 +1,11 @@
 <?php
+/**
+ * Halaman tagihan pelanggan
+ * Pelanggan dapat melihat tagihan yang dimilikinya
+ * Pelnaggan dapat mengunggah bukti pembayaran jika tagihan belum lunas
+ * Pelnaggan dapat melihat bukti pembayaran yang sudah diunggah
+ */
+
 // Pastikan pengguna adalah pelanggan
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'pelanggan') {
     header("Location: ../index.php");

@@ -1,2 +1,5 @@
 .env
+/docs
+Doxyfile
+doxygen_log.txt
 api/debug.log

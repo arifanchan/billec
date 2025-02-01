@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * File laporan pembayaran
+ * 
+ * File ini digunakan untuk menampilkan laporan pembayaran yang telah dilakukan oleh pelanggan.
+ * 
+ * @package Billec
+ */
 // Pastikan pengguna adalah admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../index.php");

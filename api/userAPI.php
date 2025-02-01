@@ -1,4 +1,7 @@
 <?php
+/**
+ * File ini berisi endpoint API untuk mengelola data admin
+ */
 include_once '../config/database.php';
 include_once '../controllers/UserController.php';
 

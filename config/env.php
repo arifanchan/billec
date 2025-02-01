@@ -1,5 +1,19 @@
 <?php
-function loadEnv($filePath) {
+/**
+ * File konfigurasi environment
+ * 
+ * File ini berisi fungsi untuk memuat variabel environment dari file .env
+ * 
+ * @package Billec
+ */
+
+ /**
+  * Fungsi untuk memuat variabel environment dari file .env
+  * 
+  * @param string $filePath
+  * @return void
+  */
+ function loadEnv($filePath) {
     if (!file_exists($filePath)) {
         throw new Exception(".env file not found at $filePath");
     }
