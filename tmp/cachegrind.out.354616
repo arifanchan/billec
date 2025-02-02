@@ -1,0 +1,438 @@
+version: 1
+creator: xdebug 3.4.1 (PHP 8.1.12)
+cmd: C:\xampp\htdocs\billec\api\pelangganAPI.php
+part: 1
+positions: line
+
+events: Time_(10ns) Memory_(bytes)
+
+fl=(2) C:\xampp\htdocs\billec\config\env.php
+fn=(1) require_once::C:\xampp\htdocs\billec\config\env.php
+1 50 0
+
+fl=(3) C:\xampp\htdocs\billec\config\database.php
+fn=(2) include_once::C:\xampp\htdocs\billec\config\database.php
+1 24430 3688
+cfl=(2)
+cfn=(1)
+calls=1 0 0
+9 50 0
+
+fl=(4) C:\xampp\htdocs\billec\controllers\PelangganController.php
+fn=(3) include_once::C:\xampp\htdocs\billec\controllers\PelangganController.php
+1 50 0
+
+fl=(1) php:internal
+fn=(4) php::session_start
+8 16510 2080
+
+fl=(1)
+fn=(5) php::header
+10 170 120
+
+fl=(1)
+fn=(6) php::file_exists
+17 6300 0
+
+fl=(1)
+fn=(7) php::file
+21 4020 704
+
+fl=(1)
+fn=(8) php::trim
+24 60 0
+
+fl=(1)
+fn=(9) php::strpos
+24 50 0
+
+fl=(1)
+fn=(10) php::explode
+29 90 448
+
+fl=(1)
+fn=(8)
+32 1 0
+
+fl=(1)
+fn=(8)
+33 10 0
+
+fl=(1)
+fn=(11) php::putenv
+36 1090 376
+
+fl=(1)
+fn=(8)
+24 1 0
+
+fl=(1)
+fn=(9)
+24 10 0
+
+fl=(1)
+fn=(10)
+29 20 440
+
+fl=(1)
+fn=(8)
+32 10 0
+
+fl=(1)
+fn=(8)
+33 1280 0
+
+fl=(1)
+fn=(11)
+36 300 56
+
+fl=(1)
+fn=(8)
+24 1 0
+
+fl=(1)
+fn=(9)
+24 10 0
+
+fl=(1)
+fn=(10)
+29 20 440
+
+fl=(1)
+fn=(8)
+32 1 0
+
+fl=(1)
+fn=(8)
+33 1 0
+
+fl=(1)
+fn=(11)
+36 270 56
+
+fl=(1)
+fn=(8)
+24 10 0
+
+fl=(1)
+fn=(9)
+24 10 0
+
+fl=(1)
+fn=(10)
+29 20 416
+
+fl=(1)
+fn=(8)
+32 10 0
+
+fl=(1)
+fn=(8)
+33 10 0
+
+fl=(1)
+fn=(11)
+36 280 64
+
+fl=(1)
+fn=(8)
+24 1 0
+
+fl=(1)
+fn=(9)
+24 10 0
+
+fl=(1)
+fn=(10)
+29 20 440
+
+fl=(1)
+fn=(8)
+32 10 0
+
+fl=(1)
+fn=(8)
+33 1 0
+
+fl=(1)
+fn=(11)
+36 920 56
+
+fl=(2)
+fn=(12) loadEnv
+16 2483 2144
+cfl=(1)
+cfn=(6)
+calls=1 0 0
+17 6300 0
+cfl=(1)
+cfn=(7)
+calls=1 0 0
+21 4020 704
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 60 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 50 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 90 448
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 1 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 10 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 1090 376
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 1 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 10 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 20 440
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 10 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 1280 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 300 56
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 1 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 10 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 20 440
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 1 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 1 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 270 56
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 10 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 10 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 20 416
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 10 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 10 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 280 64
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 1 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 10 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 20 440
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 10 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 1 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 920 56
+
+fl=(1)
+fn=(13) php::getenv
+18 470 40
+
+fl=(1)
+fn=(13)
+19 100 32
+
+fl=(1)
+fn=(13)
+20 90 32
+
+fl=(1)
+fn=(13)
+21 40 0
+
+fl=(1)
+fn=(13)
+22 40 32
+
+fl=(3)
+fn=(14) Database->__construct
+14 1130 0
+cfl=(2)
+cfn=(12)
+calls=1 0 0
+16 17330 5640
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+18 470 40
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+19 100 32
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+20 90 32
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+21 40 0
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+22 40 32
+
+fl=(1)
+fn=(15) php::PDO->__construct
+34 119060 46064
+
+fl=(1)
+fn=(16) php::PDO->setAttribute
+35 90 0
+
+fl=(3)
+fn=(17) Database->getConnection
+29 1340 472
+cfl=(1)
+cfn=(15)
+calls=1 0 0
+34 119060 46064
+cfl=(1)
+cfn=(16)
+calls=1 0 0
+35 90 0
+
+fl=(4)
+fn=(18) PelangganController->__construct
+16 60 0
+
+fl=(1)
+fn=(19) php::PDO->prepare
+28 270 480
+
+fl=(1)
+fn=(20) php::PDOStatement->execute
+29 171300 16680
+
+fl=(1)
+fn=(21) php::PDOStatement->fetchAll
+30 1950 3104
+
+fl=(1)
+fn=(22) php::json_encode
+31 640 4096
+
+fl=(4)
+fn=(23) PelangganController->getAll
+26 2130 240
+cfl=(1)
+cfn=(19)
+calls=1 0 0
+28 270 480
+cfl=(1)
+cfn=(20)
+calls=1 0 0
+29 171300 16680
+cfl=(1)
+cfn=(21)
+calls=1 0 0
+30 1950 3104
+cfl=(1)
+cfn=(22)
+calls=1 0 0
+31 640 4096
+
+fl=(5) C:\xampp\htdocs\billec\api\pelangganAPI.php
+fn=(24) {main}
+1 67070 5216
+cfl=(3)
+cfn=(2)
+calls=1 0 0
+5 24480 3688
+cfl=(4)
+cfn=(3)
+calls=1 0 0
+6 50 0
+cfl=(1)
+cfn=(4)
+calls=1 0 0
+8 16510 2080
+cfl=(1)
+cfn=(5)
+calls=1 0 0
+10 170 120
+cfl=(3)
+cfn=(14)
+calls=1 0 0
+24 19200 4728
+cfl=(3)
+cfn=(17)
+calls=1 0 0
+25 120490 46536
+cfl=(4)
+cfn=(18)
+calls=1 0 0
+26 60 0
+cfl=(4)
+cfn=(23)
+calls=1 0 0
+42 176290 24600
+
+summary: 461660 539912
+

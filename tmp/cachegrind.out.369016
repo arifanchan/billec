@@ -1,0 +1,22 @@
+version: 1
+creator: xdebug 3.4.1 (PHP 8.1.12)
+cmd: C:\xampp\htdocs\billec\public\login.php
+part: 1
+positions: line
+
+events: Time_(10ns) Memory_(bytes)
+
+fl=(1) php:internal
+fn=(1) php::session_start
+1 32250 576
+
+fl=(2) C:\xampp\htdocs\billec\public\login.php
+fn=(2) {main}
+1 3100 152
+cfl=(1)
+cfn=(1)
+calls=1 0 0
+1 32250 576
+
+summary: 70640 465488
+

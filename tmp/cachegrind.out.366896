@@ -1,0 +1,438 @@
+version: 1
+creator: xdebug 3.4.1 (PHP 8.1.12)
+cmd: C:\xampp\htdocs\billec\api\penggunaanAPI.php
+part: 1
+positions: line
+
+events: Time_(10ns) Memory_(bytes)
+
+fl=(2) C:\xampp\htdocs\billec\config\env.php
+fn=(1) require_once::C:\xampp\htdocs\billec\config\env.php
+1 130 0
+
+fl=(3) C:\xampp\htdocs\billec\config\database.php
+fn=(2) include_once::C:\xampp\htdocs\billec\config\database.php
+1 37860 3688
+cfl=(2)
+cfn=(1)
+calls=1 0 0
+9 130 0
+
+fl=(4) C:\xampp\htdocs\billec\controllers\PenggunaanController.php
+fn=(3) include_once::C:\xampp\htdocs\billec\controllers\PenggunaanController.php
+1 220 0
+
+fl=(1) php:internal
+fn=(4) php::header
+8 390 120
+
+fl=(1)
+fn=(5) php::session_start
+9 2304420 2080
+
+fl=(1)
+fn=(6) php::file_exists
+17 14650 0
+
+fl=(1)
+fn=(7) php::file
+21 24860 704
+
+fl=(1)
+fn=(8) php::trim
+24 100 0
+
+fl=(1)
+fn=(9) php::strpos
+24 70 0
+
+fl=(1)
+fn=(10) php::explode
+29 130 448
+
+fl=(1)
+fn=(8)
+32 40 0
+
+fl=(1)
+fn=(8)
+33 50 0
+
+fl=(1)
+fn=(11) php::putenv
+36 1900 376
+
+fl=(1)
+fn=(8)
+24 40 0
+
+fl=(1)
+fn=(9)
+24 50 0
+
+fl=(1)
+fn=(10)
+29 70 440
+
+fl=(1)
+fn=(8)
+32 40 0
+
+fl=(1)
+fn=(8)
+33 30 0
+
+fl=(1)
+fn=(11)
+36 1360 56
+
+fl=(1)
+fn=(8)
+24 40 0
+
+fl=(1)
+fn=(9)
+24 50 0
+
+fl=(1)
+fn=(10)
+29 60 440
+
+fl=(1)
+fn=(8)
+32 40 0
+
+fl=(1)
+fn=(8)
+33 30 0
+
+fl=(1)
+fn=(11)
+36 1210 56
+
+fl=(1)
+fn=(8)
+24 50 0
+
+fl=(1)
+fn=(9)
+24 30 0
+
+fl=(1)
+fn=(10)
+29 60 416
+
+fl=(1)
+fn=(8)
+32 40 0
+
+fl=(1)
+fn=(8)
+33 30 0
+
+fl=(1)
+fn=(11)
+36 1250 64
+
+fl=(1)
+fn=(8)
+24 40 0
+
+fl=(1)
+fn=(9)
+24 50 0
+
+fl=(1)
+fn=(10)
+29 60 440
+
+fl=(1)
+fn=(8)
+32 30 0
+
+fl=(1)
+fn=(8)
+33 30 0
+
+fl=(1)
+fn=(11)
+36 1580 56
+
+fl=(2)
+fn=(12) loadEnv
+16 11700 2144
+cfl=(1)
+cfn=(6)
+calls=1 0 0
+17 14650 0
+cfl=(1)
+cfn=(7)
+calls=1 0 0
+21 24860 704
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 100 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 70 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 130 448
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 40 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 50 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 1900 376
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 40 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 50 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 70 440
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 40 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 30 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 1360 56
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 40 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 50 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 60 440
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 40 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 30 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 1210 56
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 50 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 30 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 60 416
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 40 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 30 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 1250 64
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 40 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 50 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 60 440
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 30 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 30 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 1580 56
+
+fl=(1)
+fn=(13) php::getenv
+18 1360 40
+
+fl=(1)
+fn=(13)
+19 430 32
+
+fl=(1)
+fn=(13)
+20 430 32
+
+fl=(1)
+fn=(13)
+21 240 0
+
+fl=(1)
+fn=(13)
+22 200 32
+
+fl=(3)
+fn=(14) Database->__construct
+14 4530 0
+cfl=(2)
+cfn=(12)
+calls=1 0 0
+16 59770 5640
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+18 1360 40
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+19 430 32
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+20 430 32
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+21 240 0
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+22 200 32
+
+fl=(1)
+fn=(15) php::PDO->__construct
+34 2619800 46064
+
+fl=(1)
+fn=(16) php::PDO->setAttribute
+35 100 0
+
+fl=(3)
+fn=(17) Database->getConnection
+29 3280 472
+cfl=(1)
+cfn=(15)
+calls=1 0 0
+34 2619800 46064
+cfl=(1)
+cfn=(16)
+calls=1 0 0
+35 100 0
+
+fl=(4)
+fn=(18) PenggunaanController->__construct
+16 150 0
+
+fl=(1)
+fn=(19) php::PDO->prepare
+28 300 480
+
+fl=(1)
+fn=(20) php::PDOStatement->execute
+29 78190 16824
+
+fl=(1)
+fn=(21) php::PDOStatement->fetchAll
+30 1490 4848
+
+fl=(1)
+fn=(22) php::json_encode
+31 540 4096
+
+fl=(4)
+fn=(23) PenggunaanController->getAll
+26 1890 176
+cfl=(1)
+cfn=(19)
+calls=1 0 0
+28 300 480
+cfl=(1)
+cfn=(20)
+calls=1 0 0
+29 78190 16824
+cfl=(1)
+cfn=(21)
+calls=1 0 0
+30 1490 4848
+cfl=(1)
+cfn=(22)
+calls=1 0 0
+31 540 4096
+
+fl=(5) C:\xampp\htdocs\billec\api\penggunaanAPI.php
+fn=(24) {main}
+1 128340 0
+cfl=(3)
+cfn=(2)
+calls=1 0 0
+5 37990 3688
+cfl=(4)
+cfn=(3)
+calls=1 0 0
+6 220 0
+cfl=(1)
+cfn=(4)
+calls=1 0 0
+8 390 120
+cfl=(1)
+cfn=(5)
+calls=1 0 0
+9 2304420 2080
+cfl=(3)
+cfn=(14)
+calls=1 0 0
+11 66960 4728
+cfl=(3)
+cfn=(17)
+calls=1 0 0
+12 2623180 46536
+cfl=(4)
+cfn=(18)
+calls=1 0 0
+13 150 0
+cfl=(4)
+cfn=(23)
+calls=1 0 0
+40 82410 26424
+
+summary: 5401540 523784
+

@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Class UserController
+ * 
+ * Class ini digunakan untuk mengatur data admin
+ * @method getById($id_user) : array
+ * @method updateProfile($data) : array
+ */
 class UserController {
     private $conn;
     private $table_name = "user";
