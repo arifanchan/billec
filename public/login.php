@@ -1,6 +1,4 @@
 <?php session_start(); ?>
-
-<!-- Halaman login -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,6 +109,18 @@
         .login-container button:hover {
             background-color: #0056b3;
         }
+        .register-link {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        .register-link a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
         footer {
             background-color: #007BFF;
             color: white;
@@ -148,6 +158,9 @@
                 <button type="submit">Login</button>
             </form>
             <p id="message" class="error"></p>
+            <div class="register-link">
+                <p>Belum punya akun? <a href="register.php">Daftar di sini</a></p>
+            </div>
         </div>
     </main>
     <footer>
@@ -155,22 +168,17 @@
     </footer>
 
     <script>
-    // Event listener untuk form login
     document.getElementById("login-form").addEventListener("submit", async function (e) {
         e.preventDefault();
 
-
-        // Ambil data dari form
         const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value.trim();
 
-        // Validasi form
         if (username === "" || password === "") {
             document.getElementById("message").textContent = "Username dan password tidak boleh kosong.";
             return;
         }
         
-        // Kirim data ke server
         try {
             const response = await fetch("../api/authAPI.php", {
                 method: "POST",
@@ -186,7 +194,6 @@
 
             const result = await response.json();
 
-            // Jika login berhasil, redirect ke halaman dashboard
             if (response.ok) {
                 if (result.role === "admin") {
                     window.location.href = "admin/dashboard.php";

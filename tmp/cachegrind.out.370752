@@ -1,0 +1,550 @@
+version: 1
+creator: xdebug 3.4.1 (PHP 8.1.12)
+cmd: C:\xampp\htdocs\billec\api\dashboardAPI.php
+part: 1
+positions: line
+
+events: Time_(10ns) Memory_(bytes)
+
+fl=(2) C:\xampp\htdocs\billec\config\env.php
+fn=(1) require_once::C:\xampp\htdocs\billec\config\env.php
+1 70 0
+
+fl=(3) C:\xampp\htdocs\billec\config\database.php
+fn=(2) include_once::C:\xampp\htdocs\billec\config\database.php
+1 10560 3688
+cfl=(2)
+cfn=(1)
+calls=1 0 0
+9 70 0
+
+fl=(4) C:\xampp\htdocs\billec\controllers\DashboardController.php
+fn=(3) include_once::C:\xampp\htdocs\billec\controllers\DashboardController.php
+1 50 0
+
+fl=(1) php:internal
+fn=(4) php::header
+8 220 120
+
+fl=(1)
+fn=(5) php::session_start
+9 14080 2272
+
+fl=(1)
+fn=(6) php::file_exists
+17 2420 0
+
+fl=(1)
+fn=(7) php::file
+21 4090 704
+
+fl=(1)
+fn=(8) php::trim
+24 30 0
+
+fl=(1)
+fn=(9) php::strpos
+24 20 0
+
+fl=(1)
+fn=(10) php::explode
+29 50 448
+
+fl=(1)
+fn=(8)
+32 1 0
+
+fl=(1)
+fn=(8)
+33 10 0
+
+fl=(1)
+fn=(11) php::putenv
+36 730 376
+
+fl=(1)
+fn=(8)
+24 10 0
+
+fl=(1)
+fn=(9)
+24 10 0
+
+fl=(1)
+fn=(10)
+29 10 440
+
+fl=(1)
+fn=(8)
+32 10 0
+
+fl=(1)
+fn=(8)
+33 10 0
+
+fl=(1)
+fn=(11)
+36 550 56
+
+fl=(1)
+fn=(8)
+24 1 0
+
+fl=(1)
+fn=(9)
+24 10 0
+
+fl=(1)
+fn=(10)
+29 10 440
+
+fl=(1)
+fn=(8)
+32 10 0
+
+fl=(1)
+fn=(8)
+33 1 0
+
+fl=(1)
+fn=(11)
+36 270 56
+
+fl=(1)
+fn=(8)
+24 1 0
+
+fl=(1)
+fn=(9)
+24 10 0
+
+fl=(1)
+fn=(10)
+29 20 416
+
+fl=(1)
+fn=(8)
+32 1 0
+
+fl=(1)
+fn=(8)
+33 1 0
+
+fl=(1)
+fn=(11)
+36 290 64
+
+fl=(1)
+fn=(8)
+24 10 0
+
+fl=(1)
+fn=(9)
+24 10 0
+
+fl=(1)
+fn=(10)
+29 10 440
+
+fl=(1)
+fn=(8)
+32 1 0
+
+fl=(1)
+fn=(8)
+33 10 0
+
+fl=(1)
+fn=(11)
+36 1650 56
+
+fl=(2)
+fn=(12) loadEnv
+16 2443 2144
+cfl=(1)
+cfn=(6)
+calls=1 0 0
+17 2420 0
+cfl=(1)
+cfn=(7)
+calls=1 0 0
+21 4090 704
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 30 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 20 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 50 448
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 1 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 10 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 730 376
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 10 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 10 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 10 440
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 10 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 10 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 550 56
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 1 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 10 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 10 440
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 10 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 1 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 270 56
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 1 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 10 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 20 416
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 1 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 1 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 290 64
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+24 10 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+24 10 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+29 10 440
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+32 1 0
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+33 10 0
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+36 1650 56
+
+fl=(1)
+fn=(13) php::getenv
+18 410 40
+
+fl=(1)
+fn=(13)
+19 90 32
+
+fl=(1)
+fn=(13)
+20 90 32
+
+fl=(1)
+fn=(13)
+21 40 0
+
+fl=(1)
+fn=(13)
+22 40 32
+
+fl=(3)
+fn=(14) Database->__construct
+14 970 0
+cfl=(2)
+cfn=(12)
+calls=1 0 0
+16 12710 5640
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+18 410 40
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+19 90 32
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+20 90 32
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+21 40 0
+cfl=(1)
+cfn=(13)
+calls=1 0 0
+22 40 32
+
+fl=(1)
+fn=(15) php::PDO->__construct
+34 1485830 46064
+
+fl=(1)
+fn=(16) php::PDO->setAttribute
+35 70 0
+
+fl=(3)
+fn=(17) Database->getConnection
+29 1880 472
+cfl=(1)
+cfn=(15)
+calls=1 0 0
+34 1485830 46064
+cfl=(1)
+cfn=(16)
+calls=1 0 0
+35 70 0
+
+fl=(4)
+fn=(18) DashboardController->__construct
+16 70 0
+
+fl=(1)
+fn=(19) php::PDO->prepare
+93 150 480
+
+fl=(1)
+fn=(20) php::PDOStatement->execute
+94 26880 16432
+
+fl=(1)
+fn=(21) php::PDOStatement->fetch
+95 280 392
+
+fl=(4)
+fn=(22) DashboardController->getCount
+91 3780 0
+cfl=(1)
+cfn=(19)
+calls=1 0 0
+93 150 480
+cfl=(1)
+cfn=(20)
+calls=1 0 0
+94 26880 16432
+cfl=(1)
+cfn=(21)
+calls=1 0 0
+95 280 392
+
+fl=(1)
+fn=(19)
+93 70 480
+
+fl=(1)
+fn=(20)
+94 18300 16432
+
+fl=(1)
+fn=(21)
+95 210 392
+
+fl=(4)
+fn=(22)
+91 900 0
+cfl=(1)
+cfn=(19)
+calls=1 0 0
+93 70 480
+cfl=(1)
+cfn=(20)
+calls=1 0 0
+94 18300 16432
+cfl=(1)
+cfn=(21)
+calls=1 0 0
+95 210 392
+
+fl=(1)
+fn=(19)
+93 160 480
+
+fl=(1)
+fn=(20)
+94 11150 16432
+
+fl=(1)
+fn=(21)
+95 140 392
+
+fl=(4)
+fn=(22)
+91 950 0
+cfl=(1)
+cfn=(19)
+calls=1 0 0
+93 160 480
+cfl=(1)
+cfn=(20)
+calls=1 0 0
+94 11150 16432
+cfl=(1)
+cfn=(21)
+calls=1 0 0
+95 140 392
+
+fl=(1)
+fn=(19)
+109 90 480
+
+fl=(1)
+fn=(20)
+110 8630 16432
+
+fl=(1)
+fn=(21)
+111 70 392
+
+fl=(4)
+fn=(23) DashboardController->getSum
+107 660 0
+cfl=(1)
+cfn=(19)
+calls=1 0 0
+109 90 480
+cfl=(1)
+cfn=(20)
+calls=1 0 0
+110 8630 16432
+cfl=(1)
+cfn=(21)
+calls=1 0 0
+111 70 392
+
+fl=(4)
+fn=(24) DashboardController->getPelangganStats
+73 5230 0
+cfl=(4)
+cfn=(22)
+calls=1 0 0
+75 31090 17160
+cfl=(4)
+cfn=(22)
+calls=1 0 0
+76 19480 17176
+cfl=(4)
+cfn=(22)
+calls=1 0 0
+77 12400 17176
+cfl=(4)
+cfn=(23)
+calls=1 0 0
+78 9450 17160
+
+fl=(4)
+fn=(25) DashboardController->getDashboardStats
+38 330 0
+cfl=(4)
+cfn=(24)
+calls=1 0 0
+42 77650 600
+
+fl=(1)
+fn=(26) php::json_encode
+41 180 256
+
+fl=(5) C:\xampp\htdocs\billec\api\dashboardAPI.php
+fn=(27) {main}
+1 31330 16752
+cfl=(3)
+cfn=(2)
+calls=1 0 0
+5 10630 3688
+cfl=(4)
+cfn=(3)
+calls=1 0 0
+6 50 0
+cfl=(1)
+cfn=(4)
+calls=1 0 0
+8 220 120
+cfl=(1)
+cfn=(5)
+calls=1 0 0
+9 14080 2272
+cfl=(3)
+cfn=(14)
+calls=1 0 0
+11 14350 4728
+cfl=(3)
+cfn=(17)
+calls=1 0 0
+12 1487780 46536
+cfl=(4)
+cfn=(18)
+calls=1 0 0
+13 70 0
+cfl=(4)
+cfn=(25)
+calls=1 0 0
+40 77980 440
+cfl=(1)
+cfn=(26)
+calls=1 0 0
+41 180 256
+
+summary: 1669020 504176
+
