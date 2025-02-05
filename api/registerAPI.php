@@ -1,4 +1,7 @@
 <?php
+/**
+ * File ini berisi endpoint API untuk register
+ */
 include_once '../config/database.php';
 include_once '../controllers/RegisterController.php';
 

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Class RegisterController
+ * Class ini digunakan untuk mengatur data pendaftaran pelanggan
+ * @method getTarif() : string
+ * @method register($data) : string
+ */
 class RegisterController {
     private $conn;
     private $table_name = "pelanggan";
@@ -7,6 +13,11 @@ class RegisterController {
         $this->conn = $db;
     }
 
+    /**
+     * Function untuk mendapatkan data tarif
+     * Endpoint: /api/registerAPI.php
+     * @return string
+     */
     public function getTarif() {
         $query = "SELECT id_tarif, daya FROM tarif";
         $stmt = $this->conn->prepare($query);
@@ -14,6 +25,12 @@ class RegisterController {
         return json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
     }
 
+    /**
+     * Function untuk mendaftarkan pelanggan baru
+     * Endpoint: /api/registerAPI.php
+     * @param $data
+     * @return string
+     */
     public function register($data) {
         $username = htmlspecialchars($data->username, ENT_QUOTES, 'UTF-8');
         $password = password_hash($data->password, PASSWORD_BCRYPT);

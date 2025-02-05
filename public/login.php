@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php 
+/**
+ * File ini digunakan untuk halaman login 
+ */
+session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -164,7 +169,7 @@
         </div>
     </main>
     <footer>
-        <p>© 2025 Billec by Arifa Nofriyaldi Chan. Semua Hak Dilindungi.</p>
+        <p>© 2025 <a href="https://github.com/arifanchan/billec" target="_blank">Billec</a> by <a href="https://stackoverflow.com/users/19574157/arifa-chan" target="_blank">Arifa Nofriyaldi Chan</a>. Semua Hak Dilindungi.</p>
     </footer>
 
     <script>

@@ -118,3 +118,29 @@ footer {
     padding: 1rem 0;
     margin-top: 2rem;
 }
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a :visited {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover,
+.active {
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    text-decoration: underline; /* Tambahkan ini */
+}
+
+footer a:hover {
+    color: white;
+    text-decoration: underline; /* Tambahkan ini */
+    font-weight: bold;
+}

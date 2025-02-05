@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+// Jika pengguna sudah login, tampilkan alert dan arahkan kembali ke index.php
+if (isset($_SESSION['token'])) {
+    echo "<script>
+        alert('Anda harus logout terlebih dahulu sebelum melakukan pendaftaran.');
+        window.location.href = 'index.php';
+    </script>";
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -120,12 +133,11 @@
 </head>
 <body>
     <header>
-        <h1>Billec - Daftar Akun</h1>
+        <h2>Billec - Daftar Akun</h2>
         <p>Silakan buat akun untuk mulai menggunakan layanan kami.</p>
     </header>
     <main>
         <div class="register-container">
-            <h3>Daftar Akun Baru</h3>
             <form id="register-form">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
@@ -156,15 +168,19 @@
         </div>
     </main>
     <footer>
-        <p>© 2025 Billec. Semua Hak Dilindungi.</p>
+        <p>© 2025 <a href="https://github.com/arifanchan/billec" target="_blank">Billec</a> by 
+        <a href="https://stackoverflow.com/users/19574157/arifa-chan" target="_blank">Arifa Nofriyaldi Chan</a>. 
+        Semua Hak Dilindungi.</p>
     </footer>
 
     <script>
     document.addEventListener("DOMContentLoaded", async function() {
         const tarifSelect = document.getElementById("id_tarif");
+
         try {
             const response = await fetch("../api/registerAPI.php?action=getTarif");
             if (!response.ok) throw new Error("Gagal memuat data tarif.");
+            
             const data = await response.json();
             data.forEach(tarif => {
                 tarifSelect.innerHTML += `<option value="${tarif.id_tarif}">${tarif.daya} VA</option>`;
@@ -177,14 +193,19 @@
     document.getElementById("register-form").addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        const data = {
-            username: document.getElementById("username").value.trim(),
-            password: document.getElementById("password").value.trim(),
-            nomor_kwh: document.getElementById("nomor_kwh").value.trim(),
-            nama_pelanggan: document.getElementById("nama_pelanggan").value.trim(),
-            alamat: document.getElementById("alamat").value.trim(),
-            id_tarif: document.getElementById("id_tarif").value
-        };
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const nomor_kwh = document.getElementById("nomor_kwh").value.trim();
+        const nama_pelanggan = document.getElementById("nama_pelanggan").value.trim();
+        const alamat = document.getElementById("alamat").value.trim();
+        const id_tarif = document.getElementById("id_tarif").value;
+
+        if (!username || !password || !nomor_kwh || !nama_pelanggan || !alamat || !id_tarif) {
+            alert("Semua kolom harus diisi!");
+            return;
+        }
+
+        const data = { username, password, nomor_kwh, nama_pelanggan, alamat, id_tarif };
 
         try {
             const response = await fetch("../api/registerAPI.php", {
@@ -192,13 +213,15 @@
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             });
+
             const result = await response.json();
-            document.getElementById("message").textContent = result.message;
+            alert(result.message);
+
             if (response.ok) {
-                setTimeout(() => window.location.href = "login.php", 2000);
+                window.location.href = "login.php";
             }
         } catch (error) {
-            document.getElementById("message").textContent = "Terjadi kesalahan, coba lagi nanti.";
+            alert("Terjadi kesalahan, coba lagi nanti.");
         }
     });
     </script>
