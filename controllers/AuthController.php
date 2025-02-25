@@ -13,9 +13,11 @@ class AuthController {
     private $conn;
     private $table_user = "user";       // Tabel admin
     private $table_pelanggan = "pelanggan"; // Tabel pelanggan
+    private $config;
 
     public function __construct($db) {
         $this->conn = $db;
+        $this->config = include('../config/auth.php'); // Memasukkan konfigurasi dari config/auth.php
     }
 
 
@@ -63,11 +65,11 @@ class AuthController {
             // Verifikasi password menggunakan password_verify
             if (password_verify($password, $user['password'])) {
                 // Buat token untuk admin
-                $token = base64_encode(random_bytes(32));
+                session_regenerate_id(true);
+                $token = hash_hmac('sha256', bin2hex(random_bytes(32)), $this->config['secret_key']);
                 $_SESSION['token'] = $token;
                 $_SESSION['user'] = $user;
                 $_SESSION['role'] = 'admin';
-                session_regenerate_id(true);
                 return json_encode([
                     "message" => "Login berhasil sebagai admin",
                     "token" => $token,
@@ -93,11 +95,11 @@ class AuthController {
             // Verifikasi password menggunakan password_verify
             if (password_verify($password, $pelanggan['password'])) {
                 // Buat token untuk pelanggan
-                $token = base64_encode(random_bytes(32));
+                session_regenerate_id(true);
+                $token = hash_hmac('sha256', bin2hex(random_bytes(32)), $this->config['secret_key']);
                 $_SESSION['token'] = $token;
                 $_SESSION['user'] = $pelanggan;
                 $_SESSION['role'] = 'pelanggan';
-                session_regenerate_id(true);
                 return json_encode([
                     "message" => "Login berhasil sebagai pelanggan",
                     "token" => $token,
