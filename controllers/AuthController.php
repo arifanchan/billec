@@ -20,6 +20,39 @@ class AuthController {
         $this->config = include('../config/auth.php'); // Memasukkan konfigurasi dari config/auth.php
     }
 
+    /**
+     * Fungsi generateCaptcha
+     * 
+     * Fungsi ini digunakan untuk membuat captcha
+     * 
+     * @return string
+     * 
+     * Endpoint: GET /api/authAPI.php
+     * 
+     * Response body:
+     * - image: string
+     */
+    public function generateCaptcha() {
+        $code = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 6);
+        $_SESSION['captcha'] = $code;
+
+        $image = imagecreatetruecolor(100, 30);
+        $background = imagecolorallocate($image, 255, 255, 255);
+        $text_color = imagecolorallocate($image, 0, 0, 0);
+        $noise_color = imagecolorallocate($image, 100, 120, 180);
+        imagefilledrectangle($image, 0, 0, 100, 30, $background);
+        
+        for ($i = 0; $i < 50; $i++) {
+            imageline($image, rand(0, 150), rand(0, 50), rand(0, 150), rand(0, 50), $noise_color);
+        }
+
+        imagestring($image, 4, 10, 5, $code, $text_color);
+
+        header('Content-type: image/png');
+        imagepng($image);
+        imagedestroy($image);
+    }
+
 
     /**
      * Fungsi login
@@ -44,9 +77,21 @@ class AuthController {
 
     public function login($data) {
         // Validasi input (pastikan username dan password tidak kosong)
-        if (empty($data->username) || empty($data->password)) {
+        // if (empty($data->username) || empty($data->password)) {
+        //     http_response_code(400);
+        //     return json_encode(["message" => "Username dan password harus diisi"]);
+        // }
+
+        // Validasi input (pastikan username, password, dan CAPTCHA tidak kosong)
+        if (empty($data->username) || empty($data->password) || empty($data->captcha)) {
             http_response_code(400);
-            return json_encode(["message" => "Username dan password harus diisi"]);
+            return json_encode(["message" => "Username, password, and CAPTCHA are required"]);
+        }
+
+        // Validasi CAPTCHA
+        if ($data->captcha !== $_SESSION['captcha']) {
+            http_response_code(400);
+            return json_encode(["message" => "CAPTCHA verification failed"]);
         }
 
         // Sanitasi input untuk mencegah serangan XSS

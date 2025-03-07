@@ -159,6 +159,10 @@ if (isset($_SESSION['token'])) {
                     <option value="">Pilih Daya</option>
                 </select>
 
+                <label for="captcha">Enter CAPTCHA</label>
+                <img src="../api/captcha.php" alt="CAPTCHA">
+                <input type="text" id="captcha" name="captcha" required>
+
                 <button type="submit">Daftar</button>
             </form>
             <p id="message" class="error"></p>
@@ -199,13 +203,14 @@ if (isset($_SESSION['token'])) {
         const nama_pelanggan = document.getElementById("nama_pelanggan").value.trim();
         const alamat = document.getElementById("alamat").value.trim();
         const id_tarif = document.getElementById("id_tarif").value;
+        const captcha = document.getElementById("captcha").value.trim();
 
-        if (!username || !password || !nomor_kwh || !nama_pelanggan || !alamat || !id_tarif) {
+        if (!username || !password || !nomor_kwh || !nama_pelanggan || !alamat || !id_tarif || !captcha) {
             alert("Semua kolom harus diisi!");
             return;
         }
 
-        const data = { username, password, nomor_kwh, nama_pelanggan, alamat, id_tarif };
+        const data = { username, password, nomor_kwh, nama_pelanggan, alamat, id_tarif, captcha };
 
         try {
             const response = await fetch("../api/registerAPI.php", {

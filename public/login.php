@@ -160,6 +160,9 @@ session_start();
                 <input type="text" id="username" name="username" required>
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
+                <label for="captcha">Enter CAPTCHA</label>
+                <img src="../api/captcha.php" alt="CAPTCHA">
+                <input type="text" id="captcha" name="captcha" required>
                 <button type="submit">Login</button>
             </form>
             <p id="message" class="error"></p>
@@ -178,9 +181,15 @@ session_start();
 
         const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value.trim();
+        const captcha = document.getElementById("captcha").value.trim();
 
-        if (username === "" || password === "") {
-            document.getElementById("message").textContent = "Username dan password tidak boleh kosong.";
+        // if (username === "" || password === "") {
+        //     document.getElementById("message").textContent = "Username dan password tidak boleh kosong.";
+        //     return;
+        // }
+
+        if (username === "" || password === "" || captcha === "") {
+            document.getElementById("message").textContent = "Username, password, and CAPTCHA cannot be empty.";
             return;
         }
         
@@ -193,7 +202,8 @@ session_start();
                 body: JSON.stringify({
                     action: "login",
                     username: username,
-                    password: password
+                    password: password,
+                    captcha: captcha
                 })
             });
 

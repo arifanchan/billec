@@ -32,6 +32,19 @@ class RegisterController {
      * @return string
      */
     public function register($data) {
+        // Validasi input (pastikan semua field tidak kosong)
+
+        if (empty($data->username) || empty($data->password) || empty($data->nomor_kwh) || empty($data->nama_pelanggan) || empty($data->alamat) || empty($data->id_tarif) || empty($data->captcha)) {
+            http_response_code(400);
+            return json_encode(["message" => "Semua kolom harus diisi"]);
+        }
+
+        // Validasi CAPTCHA
+        if ($data->captcha !== $_SESSION['captcha']) {
+            http_response_code(400);
+            return json_encode(["message" => "CAPTCHA verification failed"]);
+        }
+
         $username = htmlspecialchars($data->username, ENT_QUOTES, 'UTF-8');
         $password = password_hash($data->password, PASSWORD_BCRYPT);
         $nomor_kwh = htmlspecialchars($data->nomor_kwh, ENT_QUOTES, 'UTF-8');
