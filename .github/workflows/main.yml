@@ -14,3 +14,4 @@ jobs:
         server: ${{ secrets.FTP_SERVER_INFINITY }}
         username: ${{ secrets.FTP_USERNAME_INFINITY }}
         password: ${{ secrets.FTP_PASSWORD_INFINITY }}
+        remote-dir: htdocs
